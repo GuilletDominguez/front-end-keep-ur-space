@@ -18,7 +18,7 @@
 		            <div class="app-utilities col-auto">
 			         
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/fundacion-don-bosco.jpg" alt="Pedro"></a>
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/background-4.png" alt="Pedro"></a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Account</a></li>
 								
@@ -51,8 +51,8 @@
 		  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 		</svg>
 						         </span>
-		                         <span class="nav-link-text">MANUEL
-									 
+		                         <span class="nav-link-text">Inicio
+
 								 </span>
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->

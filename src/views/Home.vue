@@ -1,3 +1,5 @@
+
+
 <template>
   <div id="body">
 <h1>Hola</h1>
@@ -9,9 +11,10 @@
 
 
 export default {
-  name: 'Home',
+ // name: 'Home',
   components: {
-  
+    
   }
 }
 </script>
+

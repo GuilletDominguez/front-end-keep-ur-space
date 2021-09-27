@@ -18,7 +18,7 @@
 		            <div class="app-utilities col-auto">
 			         
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/app-logo.svg" alt="Pedro"></a>
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/fundacion-don-bosco.jpg" alt="Pedro"></a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Account</a></li>
 								
@@ -36,7 +36,7 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
+		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"><span class="logo-text">PORTAL</span></a>
 	
 		        </div><!--//app-branding-->  
 		        
@@ -51,7 +51,9 @@
 		  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 		</svg>
 						         </span>
-		                         <span class="nav-link-text">Inicio</span>
+		                         <span class="nav-link-text">MANUEL
+									 
+								 </span>
 					        </a><!--//nav-link-->
 					    </li><!--//nav-item-->
 					 				    
@@ -90,6 +92,19 @@ export default {
 </script>
 
 <style scoped>
+
+
+.app-user-dropdow img {
+ 
+ width: 70px; 
+ height: 200px;
+}
+.app-branding .logo-icon{
+
+	width: 70px;
+	height: 60px;
+}
+
 
 
 .app-nav .nav-link.active {

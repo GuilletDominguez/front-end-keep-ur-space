@@ -70,8 +70,8 @@
 									 
 								 </span>
 					        </router-link><!--//nav-link-->
-
-					    </li><!--//nav-item-->	
+						  </li>
+					   	
 						 <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <router-link class="nav-link" :to="{name: 'Reserve'}" exact-active-class="active">
@@ -86,7 +86,7 @@
 					        </router-link><!--//nav-link-->
 					    </li><!--//nav-item-->			    
 
-					    </li><!--//nav-item-->
+					 
 						  <li class="nav-item">
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 

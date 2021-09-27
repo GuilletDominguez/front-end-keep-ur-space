@@ -5,4 +5,12 @@
   
 </template>
 
+export default {
+    new Vue({
+      el : '#app',
+      data: {
+        checked : false
+      }
+  });
+}
 

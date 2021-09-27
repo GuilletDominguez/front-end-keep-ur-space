@@ -27,7 +27,7 @@
 							</div>
 						</form>
 						
-						<div class="auth-option text-center pt-5">No Account? Sign up <a class="text-link" href="signup.html" >here</a>.</div>
+						<div class="auth-option text-center pt-5">No tiene cuenta? Registrate aqui  <a class="text-link" href="signup.html" >here</a>.</div>
 					</div><!--//auth-form-container-->	
 
 			    </div><!--//auth-body-->
@@ -35,7 +35,7 @@
 			    <footer class="app-auth-footer">
 				    <div class="container text-center py-3">
 				         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-			        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="" target="_blank">Xiaoying Riley</a> for developers</small>
+			      
 				       
 				    </div>
 			    </footer><!--//app-auth-footer-->	
@@ -65,8 +65,10 @@ export default {
 </script>
 
 <style scoped>
+
 .app-signup .auth-background-holder{
     background-size: 80%;
+
 }
 
 .app-auth-wrapper .app-logo .logo-icon {
@@ -84,8 +86,14 @@ export default {
 }
 .form-control {
 	border : 1px solid black;
+	
 }
-
+input, button , select, optgroup,textarea {
+	border-radius: 15px;
+}
+.app-auth-wrapper{
+	height: 115vh;
+}
 
 
 

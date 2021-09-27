@@ -1,5 +1,7 @@
 <template>
-<Nav/>
+
+  <Nav/>
+  <router-view/>
 </template>
 
 <script>

@@ -99,7 +99,7 @@ setup() {
         dateEnd : '',
         hourStart : '',
         hourEnd : '',
-        roomSelected: '',
+        room_id: '',
         description : ''
     }
 
@@ -119,7 +119,7 @@ setup() {
     })
 
     const onChange = ((value) =>{
-            data.roomSelected = value
+            data.room_id = value
             
         })
     return {

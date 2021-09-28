@@ -129,7 +129,7 @@ export default createStore({
         const token = localStorage.getItem('token')
         const response = await fetch('http://localhost:8000/api/reserves',{
           method: 'PUT',
-          body: data,
+          body: JSON.stringify(data),
           headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',

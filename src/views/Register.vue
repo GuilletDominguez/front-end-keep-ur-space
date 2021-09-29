@@ -18,7 +18,7 @@
 
             <div class="auth-form-container text-start mx-auto">
               <form
-                @submit.prevent="registrar"
+                @submit.prevent="register"
                 class="auth-form auth-signup-form"
               >
                 <div class="email mb-3">
@@ -27,7 +27,7 @@
                     id="name"
                     name="name"
                     type="text"
-                    v-model="name"
+                    v-model="data.name"
                     class="form-control name"
                     placeholder="Full name"
                     required="required"
@@ -39,7 +39,7 @@
                     id="email"
                     name="email"
                     type="email"
-                    v-model="email"
+                    v-model="data.email"
                     class="form-control email"
                     placeholder="Email"
                     required="required"
@@ -53,7 +53,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    v-model="password"
+                    v-model="data.password"
                     class="form-control password"
                     placeholder="Crear contraseña"
                     required="required"
@@ -67,7 +67,7 @@
                     id="confirm_password"
                     name="confirm_password"
                     type="password"
-                    v-model="confirm_password"
+                    v-model="data.password_confirmation"
                     class="form-control password"
                     placeholder="Volver a escribir la contraseña"
                     required="required"
@@ -134,9 +134,31 @@
 
 <script>
 import '../assets/js/app.js'
-
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex' 
 export default {
+setup(){
 
+  const store = useStore();
+  const data = {
+    name: '',
+    email:'',
+    password:'',
+    password_confirmation: '',
+ 
+
+  }
+  const register = ((a)=>{
+      
+        console.log(data)
+          store.dispatch('register',data)
+    })
+
+return {
+  data,
+  register
+}
+}
 	}
 
 

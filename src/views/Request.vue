@@ -16,10 +16,7 @@
 						    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
 							    <div class="col-auto">
 								    <form class="table-search-form row gx-1 align-items-center">
-					                    <div class="col-auto">
-					                        <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Buscar">
-					                    </div>
-					                  
+					                  <FilterByName/>
 					                </form>
 					                
 							    </div><!--//col-->
@@ -31,13 +28,8 @@
 			    </div><!--//row-->
 			   
 			    
-			    <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">
-				    <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Todas</a>
-				    <a class="flex-sm-fill text-sm-center nav-link"  id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Aceptadas</a>
-				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pendientes</a>
-				    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Canceladas</a>
-				</nav>
-				
+		
+				<FilterByStatus/>
 				
 				<div class="tab-content" id="orders-table-tab-content">
 			        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
@@ -64,7 +56,10 @@
 												<td class="cell">{{request.user.name}}</td>
 												<td class="cell"><span><b>Inicio:</b> {{request.dateStart}} <br> <b>Final:</b> {{request.dateEnd}}</span></td>
                                                 <td class="cell"><span><b>Inicio:</b> {{request.hourStart}} <br> <b>Final:</b> {{request.hourEnd}}</span></td>
-												<td class="cell"><span class="badge bg-success">{{request.status}}</span></td>
+												<td class="cell">
+													<span class="badge bg-success" v-if="request.status == 'Accepted'">Aceptada</span>
+													<span class="badge bg-warning" v-else>Pendiente</span>
+												</td>
 												<td class="cell">{{request.room.name}}</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -97,14 +92,20 @@
 <script>
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
+import FilterByStatus from '@/components/FilterByStatus.vue'
+import FilterByName from '@/components/FilterByName.vue'
 export default {
+	components:{
+		FilterByStatus,
+		FilterByName
+	},
 setup() {
 
     const store = useStore()
 
     const requests = computed(() =>{
 
-      return store.state.currentRequest
+      return store.state.requestFilter
 
     })
 

@@ -110,8 +110,9 @@ export default createStore({
       const formatName = name.toLowerCase()
       const results = state.currentRequest.filter((request) => {
         const requestName = request.user.name.toLowerCase()
+        const requestStatus = request.room.name.toLowerCase()
 
-        if(requestName.includes(formatName)){
+        if(requestName.includes(formatName) || requestStatus.includes(formatName)){
           return request
         }
 

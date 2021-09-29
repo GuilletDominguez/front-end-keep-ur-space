@@ -5,7 +5,8 @@ import Home from '../views/Home.vue'
 import AdminLayout from '../layout/Admin.vue'
 import Login from '../views/Login.vue'
 import Reserve from '../views/Reserve.vue'
-import Register from "../views/Register.vue";
+import Register from '../views/Register.vue';
+import Perfil from '../views/Perfil.vue';
 
 
 const routes = [
@@ -33,7 +34,12 @@ const routes = [
         path: "/register",
         name: "Register",
         component: Register,
-      },
+      }, 
+      {
+        path: "/perfil",
+        name: "Perfil",
+        component: Perfil,
+      }, 
       {
         path: '/request',
         name: 'Request',

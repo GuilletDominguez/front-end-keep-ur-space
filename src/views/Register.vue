@@ -1,4 +1,5 @@
 <template>
+ <div class="app-wrapper">
   <div class="app app-signup p-0">
     <div class="row g-0 app-auth-wrapper">
       <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
@@ -129,6 +130,7 @@
       <!--//auth-background-col-->
     </div>
     <!--//row-->
+  </div>
   </div>
 </template>
 

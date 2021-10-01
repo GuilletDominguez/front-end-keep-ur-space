@@ -45,10 +45,7 @@ export default createStore({
        })
        const data = await response.json()
        commit('setCurrentRequest', data)
-       commit('setRequestFilter',data)
-      
-       
-       
+       commit('setRequestFilter',data)       
    
       }
          catch(err) {
@@ -59,9 +56,7 @@ export default createStore({
        },
     async login ({commit},data){
 
-
         try{
-     
          
          const response = await fetch('http://localhost:8000/api/login',{
            method: 'POST',
@@ -79,15 +74,10 @@ export default createStore({
         localStorage.setItem('user_id',res.user.id)
         localStorage.setItem("token",res.token)
 
-
-
-
-
          commit('setCurrentUser', res)
         
           window.location.assign("/")
-         
-     
+      
         }
            catch(err) {
             
@@ -114,13 +104,9 @@ export default createStore({
         if(requestName.includes(formatName)){
           return request
         }
-
-      
       })
 
       commit('setRequestFilter', results)
-
-
     },
 
     async createRequest({commit,state},data){
@@ -163,10 +149,7 @@ export default createStore({
        const data = await response.json()
      
        commit('setRooms',data)
-      
-       
-       
-   
+  
       }
          catch(err) {
            //  this.$router.replace({ path: 'Login' })
@@ -189,19 +172,35 @@ export default createStore({
         })
         const res = await response.json()
         commit('setCurrentUser', res)
-       
-        
     
        }
           catch(err) {
             console.error(err)
           }
+    },
 
+    ///////   LLAMAR al PERFIL de un usuario ////////////////////
+    async vueprofile({commit},data){
+      try{
 
-
-    }
-
-
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/users/'+data,{
+          method: 'GET',
+            headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        commit('setCurrentUser', res)
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+    /////////// Fin llamada PERFIL de un usuario///////////////////
 
   },
   modules: {

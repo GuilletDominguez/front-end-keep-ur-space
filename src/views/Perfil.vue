@@ -36,20 +36,22 @@
                   <!--//row-->
                 </div>
                 <!--//app-card-header-->
+
+                
                 <div class="app-card-body px-4 w-100">
                   <div class="item border-bottom py-3">
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
-                        <div class="item-label mb-2">
+
+
+                        <!-- <div class="item-label mb-2">
                           <strong>Foto</strong>
-                        </div>
+                        </div>                        
                         <div class="item-data">
                           <img
                             class="profile-image"
-                            src="../assets/images/user.png"
-                            alt=""
-                          />
-                        </div>
+                            src="../assets/images/user.png" alt=""/>
+                        </div> -->
                       </div>
                       <!--//col-->
                       <div class="col text-end">
@@ -64,7 +66,7 @@
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
                         <div class="item-label"><strong>Nombre</strong></div>
-                        <div class="item-data">James Doe</div>
+                        <div class="item-data">{{userId.nombre}}</div>
                       </div>
                       <!--//col-->
                       <div class="col text-end">
@@ -111,6 +113,8 @@
                   </div>
                   <!--//item-->
                 </div>
+
+
                 <!--//app-card-body-->
                 <div class="app-card-footer p-4 mt-auto">
                   <a class="btn app-btn-secondary" href="#">Administrar perfil</a>
@@ -139,13 +143,28 @@
 </template>
 
 <script>
-import "../assets/js/app.js";
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
+
 
 export default {
-
+  
+  setup(id) { 
+   const userId = localStorage.getItem('user_id');
+   const store = useStore();
+   const user = computed(() => {
+      return store.state.currentUser
+   }) 
+    onMounted(() => { 
+      store.dispatch('vueprofile', userId)
+    }) 
+    }
+  }
+  
+  
 
     
-};
+
 </script>
 
 <style>

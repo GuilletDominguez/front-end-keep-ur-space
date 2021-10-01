@@ -36,8 +36,8 @@ const routes = [
         component: Register,
       }, 
       {
-        path: "/perfil",
-        name: "Perfil",
+        path: '/perfil',
+        name: 'Perfil',
         component: Perfil,
       }, 
       {

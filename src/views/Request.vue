@@ -72,17 +72,13 @@
 						</div><!--//app-card-->
 					
 						
-			        </div><!--//tab-pane-->
-			        
+			        </div><!--//tab-pane-->       
 			      
 			    
-				</div><!--//tab-content-->
-				
-				
-			    
+				</div><!--//tab-content-->	
+  
 		    </div><!--//container-fluid-->
-	    </div><!--//app-content-->
-	 
+	    </div><!--//app-content-->	 
     </div><!--//app-wrapper-->    					
 
  
@@ -111,20 +107,13 @@ setup() {
 
     onMounted(() => {
       store.dispatch('getCurrentRequest')
-    })
-
-    
+    })    
 
     return {
-
       requests
 
     }
-
-
   }
-
-
 };
 
 

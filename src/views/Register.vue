@@ -159,15 +159,9 @@ setup(){
 return {
   data,
   register
+    }
+  }
 }
-}
-	}
-
-
-
-
-
-
 
 </script>
 

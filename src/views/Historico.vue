@@ -1,6 +1,6 @@
 <template>
   <div class="app">   	
-    <!-- <header class="app-header fixed-top">	   	            
+	   	            
         <div class="app-header-inner">  
 	        <div class="container-fluid py-2">
 		        <div class="app-header-content"> 
@@ -304,7 +304,7 @@
 			    </div>
 	        </div>
 	    </div>
-    </header> -->
+  
     
     <div class="app-wrapper">
 	    
@@ -573,7 +573,7 @@
 										</tbody>
 									</table>
 						        </div><!--//table-responsive-->
-						    </div><!--//app-card-body-->		
+						    </div><!--//app-card-body-->	
 						</div><!--//app-card-->
 			        </div><!--//tab-pane-->
 				</div><!--//tab-content-->

@@ -61,7 +61,10 @@
 													<span class="badge bg-warning" v-else>Pendiente</span>
 												</td>
 												<td class="cell">{{request.room.name}}</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
+												<td class="cell"><router-link class="btn-sm app-btn-secondary" :to="{
+													name: 'SingleRequest',
+													params: {id: request.id}
+												}">View</router-link></td>
 											</tr>
 								
 										</tbody>
@@ -70,7 +73,19 @@
 						       
 						    </div><!--//app-card-body-->		
 						</div><!--//app-card-->
-					
+					<nav class="app-pagination">
+							<ul class="pagination justify-content-center">
+								<li class="page-item ">
+									<a class="page-link" href="#" v-if="pages.current > 1" @click.prevent="changePage(pages.current - 1)">Anterior</a>
+							    </li>
+								
+								<li class="page-item " exact-active-class="active" v-for="page in pagesNumber" :key="page.to"  @click.prevent="changePage(page)"><a class="page-link" href="#"  >{{page}}</a></li>
+								
+								<li class="page-item">
+								    <a class="page-link" href="#" v-if="pages.current <  pages.last_page" @click.prevent="changePage(pages.current + 1)">Siguiente</a>
+								</li>
+							</ul>
+						</nav><!--//app-pagination-->
 						
 			        </div><!--//tab-pane-->
 			        
@@ -104,20 +119,66 @@ setup() {
     const store = useStore()
 
     const requests = computed(() =>{
-
+		
       return store.state.requestFilter
 
     })
 
+	const pages = computed(() =>{
+		
+		
+		return store.state.pagination
+	})
+	
+	const pagesNumber = computed (() =>{
+		let page = store.state.pagination
+		let offset = 2;
+		
+		
+		let from = page.current - offset;
+		
+		if(from < 1){
+			from = 1;
+
+		}
+
+		let to = from + (offset * 2)
+
+		if(to >= page.last_page){
+
+			to = page.last_page
+		}
+
+		let pagesArray = [];
+
+		while(from <= to){
+			pagesArray.push(from);
+			from++;
+		}
+		
+		return pagesArray		
+	})
+
+
     onMounted(() => {
       store.dispatch('getCurrentRequest')
     })
+	
+	
 
-    
+	
+    const changePage = ((page)=>{
+		
+		pages.current = page;
+		store.dispatch('getCurrentRequest',page)
+	})
 
     return {
 
-      requests
+      requests,
+	  changePage,
+	  pages,
+	  pagesNumber
 
     }
 

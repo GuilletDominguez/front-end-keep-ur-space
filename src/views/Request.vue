@@ -159,13 +159,9 @@ setup() {
 		return pagesArray		
 	})
 
-
     onMounted(() => {
       store.dispatch('getCurrentRequest')
     })
-	
-	
-
 	
     const changePage = ((page)=>{
 		

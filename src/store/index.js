@@ -11,7 +11,9 @@ export default createStore({
     requestFilter:[],
     rooms:[],
     oneRequest:[],
-    pagination:[]
+    pagination:[],
+    oneUser:[],
+    oneRoom:[]
     
   },
   mutations: {
@@ -34,8 +36,14 @@ export default createStore({
     setPagination(state,payload){
       state.pagination = payload
     },
+    setOneUser(state,payload){
+      state.oneUser = payload
+    },
+    setOneRoom(state,payload){
+      state.oneRoom = payload
+    }
 
-    
+
 
   },
   actions: {
@@ -232,6 +240,8 @@ export default createStore({
         localStorage.setItem("user-request",res.user.name);
         
         commit('setOneRequest',res)
+        commit('setOneUser',res.user.name)
+        commit('setOneRoom',res.room.name)
         
     
        }

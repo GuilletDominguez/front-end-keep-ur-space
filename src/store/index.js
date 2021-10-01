@@ -9,7 +9,11 @@ export default createStore({
     currentRequest:[],
     currentUser:[],
     requestFilter:[],
-    rooms:[]
+    rooms:[],
+    oneRequest:[],
+    pagination:[],
+    oneUser:[],
+    oneRoom:[]
     
   },
   mutations: {
@@ -25,17 +29,33 @@ export default createStore({
     
     setRooms(state,payload){
       state.rooms = payload;
+    },
+    setOneRequest(state,payload){
+      state.oneRequest = payload
+    },
+    setPagination(state,payload){
+      state.pagination = payload
+    },
+    setOneUser(state,payload){
+      state.oneUser = payload
+    },
+    setOneRoom(state,payload){
+      state.oneRoom = payload
     }
+
+
 
   },
   actions: {
-    async getCurrentRequest({commit}){
-
-
+    async getCurrentRequest({commit},page){
+    if(page == undefined){
+      page = 1
+    }
+     ;
       try{
    
         const token = localStorage.getItem('token')
-       const response = await fetch('http://localhost:8000/api/reserves',{
+       const response = await fetch('http://localhost:8000/api/reserves?page='+page,{
          headers: {
            Accept: 'application/json',
            'Content-type': 'application/json',
@@ -44,8 +64,9 @@ export default createStore({
        }
        })
        const data = await response.json()
-       commit('setCurrentRequest', data)
-       commit('setRequestFilter',data)
+       commit('setCurrentRequest', data.reserves.data)
+       commit('setRequestFilter',data.reserves.data)
+       commit('setPagination',data.paginate)
       
        
        
@@ -57,6 +78,7 @@ export default createStore({
          }
    
        },
+   
     async login ({commit},data){
 
 
@@ -95,7 +117,7 @@ export default createStore({
            }
      
          },
-    filterByStatus({commit,state},status){
+     filterByStatus({commit,state},status){
 
       const results = state.currentRequest.filter((request)=>{
         
@@ -200,8 +222,33 @@ export default createStore({
 
 
 
-    }
+    },
 
+    async getOneRequest({commit},id){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/reserves/search/'+id,{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        localStorage.removeItem("user-request");
+        localStorage.setItem("user-request",res.user.name);
+        
+        commit('setOneRequest',res)
+        commit('setOneUser',res.user.name)
+        commit('setOneRoom',res.room.name)
+        
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    }
 
 
   },

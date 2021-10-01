@@ -4,8 +4,8 @@
 	    <div style="background-color: ; url(../assets/images/background/background-2.jpg);" class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"></a></div>
-					<h2 class="auth-heading text-center mb-5">RESERVA DE SALAS </h2>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/Don-Bosco.png" alt="logo"></a></div>
+					<h2 class="auth-heading text-center mb-5">RESERVA DE AULAS </h2>
 			        <div class="auth-form-container text-start">
 						<form @submit.prevent="login" class="auth-form login-form">         
 							<div class="email mb-3">
@@ -27,7 +27,7 @@
 							</div>
 						</form>
 						
-						<div class="auth-option text-center pt-5">No tiene cuenta? Registrate aqui  <a class="text-link" href="signup.html" >here</a>.</div>
+					
 					</div><!--//auth-form-container-->	
 
 			    </div><!--//auth-body-->
@@ -98,6 +98,19 @@ background: url(../assets/images/background/background-4.png) no-repeat center c
 
 }
 
+h2{
+	margin: 50px;
+padding: -8px;
+}
+
+#app{
+	font-family: 'Montserrat', sans-serif !important;
+}
+
+label{
+	margin: 6px;
+}
+ 
 
 
 /* .app-signup .auth-background-holder{
@@ -105,28 +118,33 @@ background: url(../assets/images/background/background-4.png) no-repeat center c
 
 } */
 
+
+
 .app-auth-wrapper .app-logo .logo-icon {
-    width: 150px ;
-    height: 150px;
-    border-radius: 50% ;
-    box-shadow: 1px 1px 4px black;
+    width: 90px ;
+    height: 70px;
+
+
+
     
 }
 .app-login .auth-background-holder{
     width: 800px !important;
     height: 80px !important;
     background-color:white !important;
-	 
+
 }
 .form-control {
 	border : 1px solid black;
 	
+
 }
 input, button , select, optgroup,textarea {
 	border-radius: 15px;
 }
 .app-auth-wrapper{
 	height: 115vh;
+	background-color:white;
 }
 
 

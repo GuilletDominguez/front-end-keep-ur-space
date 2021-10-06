@@ -6,7 +6,7 @@ import AdminLayout from '../layout/Admin.vue'
 import Login from '../views/Login.vue'
 import Reserve from '../views/Reserve.vue'
 import Register from "../views/Register.vue";
-
+import ListaUsuario from "../views/ListaUsuario.vue";
 
 const routes = [
   {
@@ -20,6 +20,16 @@ const routes = [
         name: "Home",
         component: Home,
       },
+
+      {
+        path: "/listaUsuario",
+        name: "ListaUsuario",
+        component: ListaUsuario,
+      },
+
+
+
+
       {
         path: "/about",
         name: "About",

@@ -7,6 +7,7 @@ import Login from '../views/Login.vue'
 import Reserve from '../views/Reserve.vue'
 import Register from "../views/Register.vue";
 import Historico from "../views/Historico.vue";
+import UnreadRequest from '../views/UnreadRequest.vue'
 
 
 const routes = [
@@ -68,6 +69,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/SingleRequest.vue')
+  },
+  {
+    path: '/unreadrequest',
+    name: 'UnreadRequest',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/UnreadRequest.vue')
   }
 
     ],

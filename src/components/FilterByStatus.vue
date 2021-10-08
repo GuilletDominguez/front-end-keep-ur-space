@@ -28,15 +28,18 @@ setup(){
 }
 </script>
 
-<style>
-    /* .item{
-        padding: 1rem 0.5rem;
-        background-color: var(--background-card);
-        text-align: center;
-        cursor: pointer;
-        &:hover{
-            color: var(--text-orange);
-        }
+
+  <style>
+
+/* 
+      .item{
+          padding: 1rem 0.5rem;
+          background-color: var(--background-card);
+          text-align: center;
+          cursor: pointer;
+          &:hover{
+              color: var(--text-orange);
+          }
         
-    } */
-</style>
+      } */
+ </style>

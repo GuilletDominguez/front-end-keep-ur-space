@@ -1,46 +1,6 @@
 <template>
-  <div class="app">
-    <div class="app-wrapper">
-      <div class="app-content pt-3 p-md-3 p-lg-4">
-        <div class="container-xl">
-          <div class="row g-3 mb-4 align-items-center justify-content-between">
-            <h1 class="app-page-title mb-0">LISTA USUARIOS</h1>
-
-            <div class="col-auto">
-              <div class="page-utilities">
-                <div
-                  class="
-                    row
-                    g-2
-                    justify-content-start justify-content-md-end
-                    align-items-center
-                  "
-                >
-                  <div class="col-auto">
-                    <form class="docs-search-form row gx-1 align-items-center">
-                      <div class="col-auto">
-                        <input
-                          type="text"
-                          id="search-docs"
-                          name="searchdocs"
-                          class="form-control search-docs"
-                          placeholder="Buscar"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                  <!--//col-->
-                </div>
-                <!--//row-->
-              </div>
-              <!--//table-utilities-->
-            </div>
-            <!--//col-auto-->
-          </div>
-          <!--//row-->
-
-          <div class="row g-4">
-            <div class="col-6 col-md-4 col-xl-3 col-xxl-2" v-for="user in users" :key="user.id">
+   <div class="row g-4" v-for="user in users" :key="user.id">
+            <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
               <div class="app-card app-card-doc shadow-sm h-100" >
                 <div class="app-card-thumb-holder p-3">
              
@@ -127,59 +87,14 @@
            
             <!--//col-->
           </div>
-          <!--//row-->
-        </div>
-        <!--//container-fluid-->
-      </div>
-      <!--//app-content-->
-    </div>
-
-
-  </div>
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-
 export default {
-  setup() {
 
-    const store = useStore()
-
-    const users = computed(() =>{
-
-  
-    
-      return store.state.listUser
-
-    })
-
-    onMounted(() => {
-      store.dispatch('getlistUser')
-    })
-
-    
-
-    return {
-users
-
-    }
-
-
-  }
-
-
-};
-
-
-
-
-
-
-
-
+}
 </script>
 
 <style>
+
 </style>

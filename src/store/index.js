@@ -199,7 +199,7 @@ export default createStore({
        })
        const data = await response.json()
      
-       commit('',data)
+       commit('setlistUser',data)
       
        
        

@@ -9,7 +9,8 @@ export default createStore({
     currentRequest:[],
     currentUser:[],
     requestFilter:[],
-    rooms:[]
+    rooms:[],
+    listUser:[]
     
   },
   mutations: {
@@ -25,7 +26,11 @@ export default createStore({
     
     setRooms(state,payload){
       state.rooms = payload;
-    }
+    },
+
+    setlistUser(state,payload){
+      state.listUser = payload;
+    },
 
   },
   actions: {
@@ -174,6 +179,38 @@ export default createStore({
            console.error(err)
          }
     },
+    async getlistUser({commit}){
+      try{
+ 
+        const token = localStorage.getItem('token')
+       const response = await fetch('http://localhost:8000/api/users',{
+
+
+
+
+
+         headers: {
+
+           Accept: 'application/json',
+           'Content-type': 'application/json',
+           "Authorization" : `Bearer ${token}`
+           
+       }
+       })
+       const data = await response.json()
+     
+       commit('',data)
+      
+       
+       
+   
+      }
+         catch(err) {
+           //  this.$router.replace({ path: 'Login' })
+           console.error(err)
+         }
+    },
+
 
     async register({commit},data){
       try{

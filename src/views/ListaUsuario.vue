@@ -43,11 +43,14 @@
             <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
               <div class="app-card app-card-doc shadow-sm h-100">
                 <div class="app-card-thumb-holder p-3">
-                  <span class="icon-holder">
-                    <i class="fas fa-file-alt text-file"></i>
-                  </span>
-                  <span class="badge bg-success">Nuevo </span>
-                  <a class="app-card-link-mask" href="#file-link"> </a>
+             
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+
+               
+                  <!-- <span class="badge bg-success">Nuevo </span> -->
+                  <router-link class="app-card-link-mask" :to="{name:'Perfil'}"> </router-link>
                 </div>
                 <div class="app-card-body p-3 has-card-actions">
                   <!-- <h4 class="app-doc-title truncate mb-0"><a href="#file-link">Doc lorem ipsum dolor sit amet</a></h4> -->
@@ -56,6 +59,9 @@
                       <li><span class="text-muted">Nombre:</span> Rosario</li>
                       <li>
                         <span class="text-muted">Email:</span> gamero@gmail
+                      </li>
+                        <li>
+                        <span class="text-muted">Permiso:</span> Admin-User
                       </li>
                 
                     </ul>

@@ -371,7 +371,11 @@
 												<td class="cell"><span class="note">12:16 PM</span></td>
 												<td class="cell"><span class="badge bg-success">Aceptado</span></td>
 												<td class="cell">5</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
+											<td class="cell"><router-link class="btn-sm app-btn-secondary" :to="{
+													name: 'SingleRequest',
+													params: {id: request.id}
+												}">View</router-link></td>
+
 											</tr>
 											<tr>
 												<td class="cell">#15345</td>
@@ -594,9 +598,33 @@
 </template>
 
 <script>
+import FilterByStatus from '@/components/FilterByStatus.vue'
+import FilterByName from '@/components/FilterByName.vue'
+
 export default {
+	components:{
+FilterByStatus,
+FilterByName
+},
+
+setup() {
+	  const store = useStore()
+
+    const requests = computed(() =>{
+
+      return store.state.historicoFilter
+
+    })
+
+    onMounted(() => {
+      store.dispatch('')
+    })
+return{
+historico
 
 }
+}
+};
 </script>
 
 <style>

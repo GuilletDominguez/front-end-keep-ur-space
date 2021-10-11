@@ -50,7 +50,7 @@
 
                
                   <!-- <span class="badge bg-success">Nuevo </span> -->
-                  <!-- <router-link class="app-card-link-mask" :to="{name:'Perfil'}"> </router-link> -->
+                  <router-link class="app-card-link-mask" :to="{name:'Perfil'}"> </router-link>
                 </div>
                 <div class="app-card-body p-3 has-card-actions">
                   <!-- <h4 class="app-doc-title truncate mb-0"><a href="#file-link">Doc lorem ipsum dolor sit amet</a></h4> -->

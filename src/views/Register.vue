@@ -1,5 +1,5 @@
+
 <template>
- <div class="app-wrapper">
   <div class="app app-signup p-0">
     <div class="row g-0 app-auth-wrapper">
       <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
@@ -131,14 +131,12 @@
     </div>
     <!--//row-->
   </div>
-  </div>
 </template>
 
 <script>
 import '../assets/js/app.js'
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex' 
-
 export default {
 setup(){
 
@@ -148,31 +146,31 @@ setup(){
     email:'',
     password:'',
     password_confirmation: '',
+ 
+
   }
-  const register = ((a)=>{      
+  const register = ((a)=>{
+      
         console.log(data)
           store.dispatch('register',data)
     })
+
 return {
   data,
   register
-    }
-  }
 }
+}
+	}
+
+
+
+
+
+
+
 </script>
 
-
-
-
-
-
-
-
-
-
-
 <style scoped>
-
 .app-signup .auth-background-holder {
   background-size: 80%;
 }
@@ -193,4 +191,5 @@ return {
   width: 101px;
   height: 67px;
 }
+
 </style>

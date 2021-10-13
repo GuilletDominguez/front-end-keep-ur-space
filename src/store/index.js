@@ -1,12 +1,24 @@
-import { createStore } from "vuex";
-import axios from "axios";
+
+
+import { createStore } from 'vuex'
+import axios from 'axios'
+
+
+
 
 export default createStore({
   state: {
-    currentRequest: [],
-    currentUser: [],
-    requestFilter: [],
-    rooms: [],
+    currentRequest:[],
+    currentUser:[],
+    requestFilter:[],
+    rooms:[],
+    oneRequest:[],
+    pagination:[],
+    oneUser:[],
+    oneRoom:[],
+    stats:[]
+    
+
   },
   mutations: {
     setCurrentRequest(state, payload) {
@@ -21,65 +33,102 @@ export default createStore({
     setRooms(state, payload) {
       state.rooms = payload;
     },
+
+
   },
   actions: {
-    async getCurrentRequest({ commit }) {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:8000/api/reserves", {
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        commit("setCurrentRequest", data);
-        commit("setRequestFilter", data);
-      } catch (err) {
-        //  this.$router.replace({ path: 'Login' })
-        console.error(err);
+    async getCurrentRequest({commit},page){
+    if(page == undefined){
+      page = 1
+    }
+     ;
+      try{
+   
+        const token = localStorage.getItem('token')
+       const response = await fetch('http://localhost:8000/api/reserves?page='+page,{
+         headers: {
+           Accept: 'application/json',
+           'Content-type': 'application/json',
+           "Authorization" : `Bearer ${token}`
+           
+       }
+       })
+       const data = await response.json()
+       commit('setCurrentRequest', data.reserves.data)
+       commit('setRequestFilter',data.reserves.data)
+       commit('setPagination',data.paginate)
+      
+       
+       
+   
       }
-    },
-    async login({ commit }, data) {
-      try {
-        const response = await fetch("http://localhost:8000/api/login", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            Accept: "application/json",
-            "Content-type": "application/json",
-          },
-        });
-        const res = await response.json();
-        console.log(res);
+         catch(err) {
+           //  this.$router.replace({ path: 'Login' })
+           console.error(err)
+         }
+   
+       },
+   
+    async login ({commit},data){
 
-        localStorage.setItem("user", res.user.name);
-        localStorage.setItem("user_id", res.user.id);
-        localStorage.setItem("token", res.token);
 
-        commit("setCurrentUser", res);
+        try{
+     
+         
+         const response = await fetch('http://localhost:8000/api/login',{
+           method: 'POST',
+           body: JSON.stringify(data),
+           headers: {
+             Accept: 'application/json',
+             'Content-type': 'application/json',
+             
+         }
+         })
+         const res = await response.json()
+         console.log(res)
 
-        window.location.assign("/");
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    filterByStatus({ commit, state }, status) {
-      const results = state.currentRequest.filter((request) => {
-        return request.status.includes(status);
-      });
+        localStorage.setItem("user",res.user.name);
+        localStorage.setItem('user_id',res.user.id)
+        localStorage.setItem("token",res.token)
 
-      commit("setRequestFilter", results);
+
+
+
+
+         commit('setCurrentUser', res)
+       
+          window.location.assign("/")
+         
+     
+        }
+           catch(err) {
+            
+             console.error(err)
+           }
+     
+         },
+     filterByStatus({commit,state},status){
+
+      const results = state.currentRequest.filter((request)=>{
+        
+        return request.status.includes(status)
+      })
+
+      commit('setRequestFilter', results)
+
+
+     
     },
 
     filterByName({ commit, state }, name) {
       const formatName = name.toLowerCase();
       const results = state.currentRequest.filter((request) => {
+
         const requestName = request.user.name.toLowerCase();
 
         if (requestName.includes(formatName)) {
           return request;
+
         }
       });
 
@@ -144,6 +193,7 @@ export default createStore({
       }
     },
 
+
     ///////   LLAMAR al PERFIL de un usuario ////////////////////
     async vueProfile({ commit }, id) {
       try {
@@ -187,6 +237,61 @@ export default createStore({
       }
     },
 
+    },
+
+    async getOneRequest({commit},id){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/reserves/search/'+id,{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        localStorage.removeItem("user-request");
+        localStorage.setItem("user-request",res.user.name);
+        
+        commit('setOneRequest',res)
+        commit('setOneUser',res.user.name)
+        commit('setOneRoom',res.room.name)
+        
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+
+    async getStats({commit}){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/reserves/getstats',{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        commit('setStats',res)
+        
+        
+       
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+
+    
+    
+
+
     ///////    BORRAR PERFIL ///////
     async delete({ commit }, id) {
       try {
@@ -206,5 +311,6 @@ export default createStore({
       }
     },
   },
+
   modules: {},
 });

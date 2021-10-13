@@ -315,9 +315,7 @@
 						       
 						    </div><!--//app-card-body-->		
 						</div><!--//app-card-->
-						<div>
-							
-						</div>
+
 						<nav class="app-pagination">
 							<ul class="pagination justify-content-center">
 								<li class="page-item disabled">

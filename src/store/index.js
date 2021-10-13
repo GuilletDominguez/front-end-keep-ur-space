@@ -1,3 +1,4 @@
+
 import { createStore } from 'vuex'
 import axios from 'axios'
 
@@ -13,7 +14,8 @@ export default createStore({
     oneRequest:[],
     pagination:[],
     oneUser:[],
-    oneRoom:[]
+    oneRoom:[],
+    stats:[]
     
   },
   mutations: {
@@ -41,6 +43,9 @@ export default createStore({
     },
     setOneRoom(state,payload){
       state.oneRoom = payload
+    },
+    setStats(state,payload){
+      state.stats = payload
     }
 
 
@@ -106,7 +111,7 @@ export default createStore({
 
 
          commit('setCurrentUser', res)
-        
+       
           window.location.assign("/")
          
      
@@ -248,10 +253,37 @@ export default createStore({
           catch(err) {
             console.error(err)
           }
-    }
+    },
 
+    async getStats({commit}){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/reserves/getstats',{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        commit('setStats',res)
+        
+        
+       
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+
+    
+    
 
   },
   modules: {
   }
 })
+
+

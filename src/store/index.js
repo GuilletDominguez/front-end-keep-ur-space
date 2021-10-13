@@ -35,9 +35,18 @@ export default createStore({
     setRooms(state, payload) {
       state.rooms = payload;
     },
+
     setlistUser(state,payload){
       state.listUser = payload;
     },
+
+
+    setPagination(state,payload){
+      state.pagination = payload;
+    },
+    setStats(state,payload){
+      state.stats = payload;
+    }
 
 
 
@@ -304,7 +313,7 @@ export default createStore({
       }
     },
 
-    },
+  
 
     async getOneRequest({commit},id){
       try{

@@ -122,7 +122,7 @@ props:['id'],
     })
 
     const room = computed(()=>{
-
+		console.log(store.state.oneRoom)
 		return store.state.oneRoom
 	})
 

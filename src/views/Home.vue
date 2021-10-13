@@ -13,11 +13,13 @@
 			    <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
 				    <div class="inner">
 					    <div class="app-card-body p-3 p-lg-4">
-						    <h3 class="mb-3">Bienvenida, Bely!</h3>
+						    <h3 class="mb-3">Bienvenid@ {{user}}!</h3>
 						    <div class="row">
 						        <div class="col-0 col-lg-9">
 							        
-							        <div>Pagina en construccion.</div>
+							        <div>Aqui puedes ver un resumen de las peticiones.
+								
+									</div>
 							    </div><!--//col-->
 							    <div class="col-12 col-lg-3">
 						
@@ -29,50 +31,46 @@
 				    </div><!--//inner-->
 			    </div><!--//app-card-->
 				    
-			    <div class="row g-4 mb-4">
+			   <div class="row g-4 mb-4">
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
-							    <h4 class="stats-type mb-1">Número de peticiones totales</h4>
-							    <div class="stats-figure">$12,628</div>
-							    <div class="stats-meta text-success">
-								    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
-</svg> 20%</div>
+							    <h4 class="stats-type mb-1">Peticiones totales</h4>
+							    <div class="stats-figure">{{stats.total}}</div>
+							
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
+						    
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
-							    <h4 class="stats-type mb-1">Expenses</h4>
-							    <div class="stats-figure">$2,250</div>
-					
+							    <h4 class="stats-type mb-1">Pendientes</h4>
+							    <div class="stats-figure">{{stats.pending}}</div>
+							
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
+						    
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
-							    <h4 class="stats-type mb-1">Projects</h4>
-							    <div class="stats-figure">23</div>
-							    <div class="stats-meta">
-								    Open</div>
+							    <h4 class="stats-type mb-1">Aceptadas</h4>
+							    <div class="stats-figure">{{stats.accepted}}</div>
+							    
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
+						    
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
-							    <h4 class="stats-type mb-1">Invoices</h4>
-							    <div class="stats-figure">6</div>
-							    <div class="stats-meta">New</div>
+							    <h4 class="stats-type mb-1">Canceladas</h4>
+							    
+							    <div class="stats-figure">{{stats.cancelled}}</div>
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
+						   
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 			    </div><!--//row-->
@@ -93,16 +91,16 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Invoices</h4>
+								        <h4 class="app-card-title">Crear una petición nueva</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4">
 							    
-							    <div class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquet eros vel diam semper mollis.</div>
+							    <div class="intro">Accede rápidamente a crear una petición.</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Create New</a>
+							   <a class="btn app-btn-secondary" href="#">Crear</a>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -120,7 +118,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Apps</h4>
+								        <h4 class="app-card-title">Consulta tus peticiones</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -129,7 +127,7 @@
 							    <div class="intro">Pellentesque varius, elit vel volutpat sollicitudin, lacus quam efficitur augue</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Create New</a>
+							   <a class="btn app-btn-secondary" href="#">Consultar</a>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -147,7 +145,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Tools</h4>
+								        <h4 class="app-card-title">Configura tu perfi</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -156,7 +154,7 @@
 							    <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi molestie neque, et tincidunt velit turpis non enim.</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Create New</a>
+							   <a class="btn app-btn-secondary" href="#">Configurar</a>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -165,13 +163,7 @@
 		    </div><!--//container-fluid-->
 	    </div><!--//app-content-->
 	    
-	    <footer class="app-footer">
-		    <div class="container text-center py-3">
-		         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-            <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-		       
-		    </div>
-	    </footer><!--//app-footer-->
+	   
 	    
     </div><!--//app-wrapper-->    					
 
@@ -183,13 +175,37 @@
 
 <script>
 // @ is an alias to /src
-
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
  name: 'Home',
   components: {
     
-  }
+  },
+
+setup() {
+	 const store = useStore()
+
+	const user = localStorage.getItem('user')
+	const stats = computed(()=>{
+
+		return store.state.stats
+	})
+
+	onMounted(() => {
+		store.dispatch('getStats')
+	})
+
+	return {
+	user,
+	stats
+	}
+
+
+
+},
+
 }
 </script>
 

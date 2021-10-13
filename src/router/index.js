@@ -1,12 +1,15 @@
-
-
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import AdminLayout from '../layout/Admin.vue'
-import Login from '../views/Login.vue'
-import Reserve from '../views/Reserve.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import AdminLayout from "../layout/Admin.vue";
+import Login from "../views/Login.vue";
+import Reserve from "../views/Reserve.vue";
 import Register from "../views/Register.vue";
+import Perfil from "../views/Perfil.vue";
 import Historico from "../views/Historico.vue";
+import UnreadRequest from '../views/UnreadRequest.vue'
+
+import Calendar from '../views/Calendar.vue'
+
 
 
 const routes = [
@@ -44,13 +47,29 @@ const routes = [
         component: Register,
       },
       {
-        path: '/request',
-        name: 'Request',
+        path: "/perfil",
+        name: "Perfil",
+        component: Perfil,
+      },
+      {
+        path: "/request",
+        name: "Request",
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/Request.vue')
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/Request.vue"),
       },
+      {
+        path: "/reserve",
+        name: "Reserve",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/Reserve.vue"),
+      },
+
 
           {
       path: '/reserve',
@@ -68,19 +87,34 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/SingleRequest.vue')
-  }
-
-    ],
+  },
+  {
+    path: '/unreadrequest',
+    name: 'UnreadRequest',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/UnreadRequest.vue')
 
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login,
+    path: '/calendar',
+    name: 'Calendar',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Calendar.vue')
 
+  }
 
+    ],
   },
-]
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

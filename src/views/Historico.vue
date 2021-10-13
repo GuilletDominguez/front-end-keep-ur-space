@@ -271,6 +271,7 @@
     </div>
 
     <div class="app-wrapper">
+
       <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
           <div class="row g-3 mb-4 align-items-center justify-content-between">
@@ -421,6 +422,7 @@
             </div>
             <!--//tab-pane-->
             <!-- <div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
+
 					    <div class="app-card app-card-orders-table mb-5">
 						    <div class="app-card-body">
 							    <div class="table-responsive">

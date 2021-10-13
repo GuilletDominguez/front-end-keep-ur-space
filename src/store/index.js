@@ -1,3 +1,5 @@
+
+
 import { createStore } from 'vuex'
 import axios from 'axios'
 
@@ -13,36 +15,24 @@ export default createStore({
     oneRequest:[],
     pagination:[],
     oneUser:[],
-    oneRoom:[]
+    oneRoom:[],
+    stats:[]
     
+
   },
   mutations: {
-    setCurrentRequest(state,payload){
-      state.currentRequest = payload
+    setCurrentRequest(state, payload) {
+      state.currentRequest = payload;
     },
-    setCurrentUser(state,payload){
-      state.currentUser = payload
+    setCurrentUser(state, payload) {
+      state.currentUser = payload;
     },
-    setRequestFilter(state,payload){
-      state.requestFilter = payload
+    setRequestFilter(state, payload) {
+      state.requestFilter = payload;
     },
-    
-    setRooms(state,payload){
+    setRooms(state, payload) {
       state.rooms = payload;
     },
-    setOneRequest(state,payload){
-      state.oneRequest = payload
-    },
-    setPagination(state,payload){
-      state.pagination = payload
-    },
-    setOneUser(state,payload){
-      state.oneUser = payload
-    },
-    setOneRoom(state,payload){
-      state.oneRoom = payload
-    }
-
 
 
   },
@@ -106,7 +96,7 @@ export default createStore({
 
 
          commit('setCurrentUser', res)
-        
+       
           window.location.assign("/")
          
      
@@ -126,76 +116,103 @@ export default createStore({
 
       commit('setRequestFilter', results)
 
+
+     
     },
 
-    filterByName({commit,state},name){
-      const formatName = name.toLowerCase()
+    filterByName({ commit, state }, name) {
+      const formatName = name.toLowerCase();
       const results = state.currentRequest.filter((request) => {
-        const requestName = request.user.name.toLowerCase()
-        const requestStatus = request.room.name.toLowerCase()
 
-        if(requestName.includes(formatName) || requestStatus.includes(formatName)){
-          return request
+        const requestName = request.user.name.toLowerCase();
+
+        if (requestName.includes(formatName)) {
+          return request;
+
         }
+      });
 
-      
-      })
-
-      commit('setRequestFilter', results)
-
-
+      commit("setRequestFilter", results);
     },
 
-    async createRequest({commit,state},data){
-      try{
-
-        const token = localStorage.getItem('token')
-        const response = await fetch('http://localhost:8000/api/reserves',{
-          method: 'PUT',
+    async createRequest({ commit, state }, data) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/reserves", {
+          method: "PUT",
           body: JSON.stringify(data),
           headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-            "Authorization" : `Bearer ${token}`
-        }
-        })
-        const res = await response.json()
-        commit('setCurrentRequest', res)
-       
-        
-    
-       }
-          catch(err) {
-            //  this.$router.replace({ path: 'Login' })
-            console.error(err)
-          }
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentRequest", res);
+      } catch (err) {
+        //  this.$router.replace({ path: 'Login' })
+        console.error(err);
+      }
     },
 
-    async getRooms({commit}){
-      try{
-   
-        const token = localStorage.getItem('token')
-       const response = await fetch('http://localhost:8000/api/rooms',{
-         headers: {
-           Accept: 'application/json',
-           'Content-type': 'application/json',
-           "Authorization" : `Bearer ${token}`
-           
-       }
-       })
-       const data = await response.json()
-     
-       commit('setRooms',data)
-      
-       
-       
-   
+    async getRooms({ commit }) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/rooms", {
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        commit("setRooms", data);
+      } catch (err) {
+        //  this.$router.replace({ path: 'Login' })
+        console.error(err);
       }
-         catch(err) {
-           //  this.$router.replace({ path: 'Login' })
-           console.error(err)
-         }
     },
+
+    async register({ commit }, data) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/register", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentUser", res);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
+
+    ///////   LLAMAR al PERFIL de un usuario ////////////////////
+    async vueProfile({ commit }, id) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/users/" + id, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentUser", res);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
     async getCurrentHistorico({commit },id){
       try{
    
@@ -223,30 +240,31 @@ export default createStore({
          }
     },
 
-    async register({commit},data){
-      try{
+    /////////// Fin llamada PERFIL de un usuario///////////////////
 
-        const token = localStorage.getItem('token')
-        const response = await fetch('http://localhost:8000/api/register',{
-          method: 'POST',
+    /////////// EDITAR PERFIL ////////////////////
+
+
+    async update({ commit }, data) {
+      try {
+        console.log(data);
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/users/" + data.id, {
+          //data  dentro de body y en formato json
+          method: "PUT",
           body: JSON.stringify(data),
           headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-            "Authorization" : `Bearer ${token}`
-        }
-        })
-        const res = await response.json()
-        commit('setCurrentUser', res)
-       
-        
-    
-       }
-          catch(err) {
-            console.error(err)
-          }
-
-
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentUser", res);
+      } catch (err) {
+        console.error(err);
+      }
+    },
 
     },
 
@@ -274,10 +292,54 @@ export default createStore({
           catch(err) {
             console.error(err)
           }
-    }
+    },
+
+    async getStats({commit}){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/reserves/getstats',{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        commit('setStats',res)
+        
+        
+       
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+
+    
+    
 
 
+    ///////    BORRAR PERFIL ///////
+    async delete({ commit }, id) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/users/"+id, {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentUser", res);
+      } catch (err) {
+        console.error(err);
+      }
+    },
   },
-  modules: {
-  }
-})
+
+  modules: {},
+});

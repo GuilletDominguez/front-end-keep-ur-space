@@ -1,3 +1,4 @@
+
 <template>
   <div class="app">   	
     
@@ -148,4 +149,3 @@ props:['id'],
 
 <style>
 
-</style>

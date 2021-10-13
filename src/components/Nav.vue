@@ -20,7 +20,11 @@
 		            <div class="app-utilities col-auto">
 			         
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/background-5.jpg" alt="Pedro"></a>
+				            <!-- <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/background-5.jpg" alt="Pedro"></a> -->
+												<svg xmlns="http://www.w3.org/2000/svg" width="70" height="40" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+		
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 
 								<li><a class="dropdown-item" href="account.html">Cuenta</a></li>

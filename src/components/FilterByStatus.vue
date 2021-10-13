@@ -10,13 +10,10 @@
 import { useStore} from 'vuex'
 export default {
 setup(){
-
     const store = useStore();
-    const filter = ((status)=>{
-        
+    const filter = ((status)=>{        
         store.dispatch('filterByStatus',status)
     })
-
     return{
         filter
         }

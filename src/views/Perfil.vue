@@ -1,6 +1,5 @@
 <template>
-  <div class="app">
-    
+  <div class="app">   
 
     <div class="app-wrapper">
       <div class="app-content pt-3 p-md-3 p-lg-4">
@@ -15,8 +14,7 @@
                   d-flex
                   flex-column
                   align-items-start
-                "
-              >
+                ">
                 <div class="app-card-header p-3 border-bottom-0">
                   <div class="row align-items-center gx-3">
                     <div class="col-auto">
@@ -35,15 +33,11 @@
                   </div>
                   <!--//row-->
                 </div>
-                <!--//app-card-header-->
-
-                
+                <!--//app-card-header-->                
                 <div class="app-card-body px-4 w-100">
                   <div class="item border-bottom py-3">
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
-
-
                         <!-- <div class="item-label mb-2">
                           <strong>Foto</strong>
                         </div>                        
@@ -54,9 +48,9 @@
                         </div> -->
                       </div>
                       <!--//col-->
-                      <div class="col text-end">
+                      <!-- <div class="col text-end">
                         <a class="btn-sm app-btn-secondary" href="#">Cambiar</a>
-                      </div>
+                      </div> -->
                       <!--//col-->
                     </div>
                     <!--//row-->
@@ -66,12 +60,13 @@
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
                         <div class="item-label"><strong>Nombre</strong></div>
-                        <div class="item-data">{{userId.nombre}}</div>
+
+                        <input v-model="user.name"  id="name" class="item-data" type="text" placeholder="Nombre">
                       </div>
                       <!--//col-->
-                      <div class="col text-end">
+                      <!-- <div class="col text-end">
                         <a class="btn-sm app-btn-secondary" href="#">Cambiar</a>
-                      </div>
+                      </div> -->
                       <!--//col-->
                     </div>
                     <!--//row-->
@@ -81,66 +76,92 @@
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
                         <div class="item-label"><strong>Email</strong></div>
-                        <div class="item-data">james.doe@website.com</div>
+                        <input v-model="user.email" id="email" class="item-data" type="text" placeholder="Correo">
                       </div>
                       <!--//col-->
-                      <div class="col text-end">
+                      <!-- <div class="col text-end">
                         <a class="btn-sm app-btn-secondary" href="#">Cambiar</a>
-                      </div>
+                      </div> -->
                       <!--//col-->
                     </div>
                     <!--//row-->
                   </div>
+                  
+                  <!--//item-->
+                  
+                  
+                  <div class="item border-bottom py-3">
+                    <div class="row justify-content-between align-items-center">
+                      <div class="col-auto">
+                        <div class="item-label"><strong>Antigüa Contraseña</strong></div>
+                        <input v-model="user.password" id="password" class="item-data" type="text" placeholder="Contraseña">
+                      </div>                                                            
+                      <!--//col-->
+                      <!-- <div class="col text-end">
+                        <a class="btn-sm app-btn-secondary" >Cambiar</a>
+                      </div> -->
+                      <!--//col-->
+                    </div>
+                    <!--//row-->
+                  </div>
+
+                  <div class="item border-bottom py-3">
+                    <div class="row justify-content-between align-items-center">
+                      <div class="col-auto">
+                        <div class="item-label"><strong> Nueva Contraseña</strong></div>
+                        <input v-model="user.password" id="password" class="item-data" type="text" placeholder="Contraseña">
+                      </div>             
+                      <!--//col-->
+                      <!-- <div class="col text-end">
+                        <a class="btn-sm app-btn-secondary" >Cambiar</a>
+                      </div> -->
+                      <!--//col-->
+                    </div>
+                    <!--//row-->
+                  </div>
+
+
                   <!--//item-->
                   <div class="item border-bottom py-3">
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
-                        <div class="item-label"><strong>Contraseña</strong></div>
-                        <div class="item-data">https://johndoewebsite.com</div>
+                        <div class="item-label"><strong>Permisos</strong></div>
+
+                        <input v-model="user.rol_id" id="rol_id" class="item-data" type="text" placeholder="Permisos">
                       </div>
                       <!--//col-->
-                      <div class="col text-end">
+                      <!-- <div class="col text-end">
                         <a class="btn-sm app-btn-secondary" href="#">Cambiar</a>
-                      </div>
+                      </div> -->
                       <!--//col-->
-                    </div>
-                    <!--//row-->
-                  </div>
-                  <!--//item-->
-                  <div class="item border-bottom py-3">
-                    
+                    </div> 
                     <!--//row-->
                   </div>
                   <!--//item-->
                 </div>
-
-
                 <!--//app-card-body-->
                 <div class="app-card-footer p-4 mt-auto">
-                  <a class="btn app-btn-secondary" href="#">Administrar perfil</a>
+                  <button class="btn app-btn-secondary mx-1" @click="updateUser()">Modificar Perfil</button>
+                  <button class="btn app-btn-secondary mx-4" id="borrar" @click.prevent="deleteUser()">Borrar</button>
+                  
                 </div>
                 <!--//app-card-footer-->
               </div>
               <!--//app-card-->
             </div>
-            <!--//col-->
-          
-            <!--//col-->
-          
-           
+            <!--//col-->          
+            <!--//col-->           
           </div>
           <!--//row-->
         </div>
         <!--//container-fluid-->
       </div>
-      <!--//app-content-->
-
-  
+      <!--//app-content-->  
       <!--//app-footer-->
     </div>
     <!--//app-wrapper-->
   </div>
-</template>
+</template>   
 
 <script>
 import { computed, onMounted } from 'vue'
@@ -149,23 +170,47 @@ import { useStore } from 'vuex'
 
 export default {
   
-  setup(id) { 
-   const userId = localStorage.getItem('user_id');
+  setup() { 
+   const userId = localStorage.getItem('user_id');  
    const store = useStore();
    const user = computed(() => {
+    
       return store.state.currentUser
    }) 
-    onMounted(() => { 
-      store.dispatch('vueprofile', userId)
-    }) 
-    }
-  }
-  
-  
-
+  onMounted(() => { 
+      store.dispatch('vueProfile', userId)
+         })  
+  const data = user
+  const updateUser = (() => { 
+        const currentUser = {
+          id: data.value.id,
+          name: data.value.name,
+          email: data.value.email,
+          password: 'password',
+          phone_number: 'none',
+          rol_id: data.value.rol_id
+        }    
+        console.log(currentUser)   
+        store.dispatch('update', currentUser)    
+  }) 
+//////////// Borrar Perfil /////////
+  const deleteUser = (() => { 
     
+    store.dispatch('delete', userId)
+  })
+      return{       
+      user,
+      updateUser,
+      deleteUser
+    }
+  },
+} 
+
+
 
 </script>
 
-<style>
+<style scoped> 
 </style>
+
+

@@ -138,6 +138,7 @@
 import '../assets/js/app.js'
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex' 
+
 export default {
 setup(){
 
@@ -147,25 +148,31 @@ setup(){
     email:'',
     password:'',
     password_confirmation: '',
- 
-
   }
-  const register = ((a)=>{
-      
+  const register = ((a)=>{      
         console.log(data)
           store.dispatch('register',data)
     })
-
 return {
   data,
   register
     }
   }
 }
-
 </script>
 
+
+
+
+
+
+
+
+
+
+
 <style scoped>
+
 .app-signup .auth-background-holder {
   background-size: 80%;
 }

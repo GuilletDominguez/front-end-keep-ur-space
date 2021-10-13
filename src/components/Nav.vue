@@ -160,47 +160,33 @@ export default {};
 </script>
 
 <style scoped>
-
-
-.app-user-dropdow img {
- 
+.app-user-dropdow img { 
  width: 70px; 
  height: 200px;
 }
 .app-branding .logo-icon{
-
 	width: 70px;
 	height: 60px;
 }
-
-
-
 .app-nav .nav-link.active {
 	color: #dc001b!important;
 	border-left: 3px solid #dc001b!important;
 	background: #dc001a17!important;
 }
-
 .app-sidepanel{
 	border-right: 1px solid #dc001a8f!important;
 }
-
 .app-header {
 	border-bottom: 1px solid #dc001a8f!important;
 }
-
 .nav-link:hover{
 	color: #dc001b!important;
-}
-
-.dropdown-menu {
+}.dropdown-menu {
 	border: 1px solid  #dc001a7c!important;
 }
-
 hr {
 	background:  #dc001a7c!important;
 }
-
 #sidepanel-toggler{
 	color: #dc001b!important;
 }

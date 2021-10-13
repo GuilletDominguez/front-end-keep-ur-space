@@ -96,13 +96,9 @@ export default {
 		FilterByName
 	},
 setup() {
-
     const store = useStore()
-
     const requests = computed(() =>{
-
       return store.state.requestFilter
-
     })
 
     onMounted(() => {
@@ -111,7 +107,6 @@ setup() {
 
     return {
       requests
-
     }
   }
 };

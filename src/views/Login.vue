@@ -61,32 +61,22 @@
 <script>
 
 import { useStore } from 'vuex'
-
 export default {
 setup(){
-
 const user = {
 	email: '',
 	password: '',
 }
-
 const store = useStore();
-
 const login = ((a) => {
 	console.log(user)
 	store.dispatch('login', user)
 })
-
 return{
 	login,
 	user
-}
-
-
-
-
-}
-
+	}
+  }
 }
 </script>
 

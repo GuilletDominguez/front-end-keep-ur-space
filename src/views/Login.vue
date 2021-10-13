@@ -1,3 +1,4 @@
+
 <template>
 <div class="app app-login p-0">    	
     <div class="row g-0 app-auth-wrapper">
@@ -146,6 +147,7 @@ input, button , select, optgroup,textarea {
 	height: 115vh;
 	background-color:white;
 }
+
 
 
 

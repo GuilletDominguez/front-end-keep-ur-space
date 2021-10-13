@@ -26,10 +26,12 @@
 </svg>
 		
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-								<li><a class="dropdown-item" href="account.html">Account</a></li>
+
+								<li><a class="dropdown-item" href="account.html">Cuenta</a></li>
 								
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="login.html">Log Out</a></li>
+								<li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+
 							</ul>
 			            </div><!--//app-user-dropdown--> 
 		            </div><!--//app-utilities-->
@@ -42,7 +44,7 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"><span class="logo-text">PORTAL</span></a>
+		            <router-link class="app-logo" :to="{name : 'Home'}"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"><span class="logo-text">PORTAL</span></router-link>
 	
 		        </div><!--//app-branding-->  
 		        
@@ -62,12 +64,35 @@
 								 </span>
 					        </router-link><!--//nav-link-->
 					    </li><!--//nav-item-->
+
+						<li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <router-link class="nav-link" :to="{name: 'Calendar'}" exact-active-class="active">
+						        <span class="nav-icon">
+						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+  <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Calendario
+									 
+								 </span>
+					        </router-link><!--//nav-link-->
+						  </li>
+
+
 					 	 <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <router-link class="nav-link" :to="{name: 'Request'}" exact-active-class="active">
 						        <span class="nav-icon">
+
+						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+
 						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-inbox-fill" viewBox="0 0 16 16">
   <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
+
 </svg>
 						         </span>
 		                         <span class="nav-link-text">Peticiones
@@ -84,18 +109,36 @@
   <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
 </svg>
 						         </span>
-		                         <span class="nav-link-text">Crear una reserva
+
+		                         <span class="nav-link-text">Reservar sala
+
 									 
 								 </span>
 					        </router-link><!--//nav-link-->
 					    </li><!--//nav-item-->			    
 
+
+						 <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <router-link class="nav-link" :to="{name: 'Historico'}" exact-active-class="active">
+						        <span class="nav-icon">
+						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+  <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z"/>
+  <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Peticiones enviadas
+									 
+								 </span>
+					        </router-link><!--//nav-link-->
+					    </li><!--//nav-item-->		
+
 					 
-						  <li class="nav-item">
+						 
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 
               <!--//////////////// NUEVO USUARIO ////////////////-->
-
+			<li class="nav-item">
               <router-link :to="{name:'Register'}" exact-active-class="active" class="nav-link">
                 <span class="nav-icon">
                   <svg
@@ -113,9 +156,22 @@
                 </span>
                 <span class="nav-link-text">Nuevo Usuario</span>
               </router-link>
+			</li>
+				<!-- ///////////////// PERFIL /////////////////// -->
+				<li class="nav-item">
+              <router-link :to="{name:'Perfil'}" exact-active-class="active" class="nav-link">
+                <span class="nav-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+</svg>
+                </span>
+                <span class="nav-link-text">Perfil Usuario</span>
+              </router-link>
+			</li>
+
 
               <!--//nav-link-->
-            </li>			    
+           			    
 
 				    </ul><!--//app-menu-->
 			    </nav><!--//app-nav-->
@@ -127,13 +183,14 @@
 						    <li class="nav-item">
 						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 						        <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
-							        <span class="nav-icon">
-							            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-	  <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
-	  <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-	</svg>
+
+							           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg>
 							        </span>
-			                        <span class="nav-link-text">Log out</span>
+			                        <span class="nav-link-text">Cerrar sesión</span>
+
 						        </a><!--//nav-link-->
 						    </li><!--//nav-item-->
 					    </ul><!--//footer-menu-->
@@ -151,47 +208,33 @@ export default {};
 </script>
 
 <style scoped>
-
-
-.app-user-dropdow img {
- 
+.app-user-dropdow img { 
  width: 70px; 
  height: 200px;
 }
 .app-branding .logo-icon{
-
 	width: 70px;
 	height: 60px;
 }
-
-
-
 .app-nav .nav-link.active {
 	color: #dc001b!important;
 	border-left: 3px solid #dc001b!important;
 	background: #dc001a17!important;
 }
-
 .app-sidepanel{
 	border-right: 1px solid #dc001a8f!important;
 }
-
 .app-header {
 	border-bottom: 1px solid #dc001a8f!important;
 }
-
 .nav-link:hover{
 	color: #dc001b!important;
-}
-
-.dropdown-menu {
+}.dropdown-menu {
 	border: 1px solid  #dc001a7c!important;
 }
-
 hr {
 	background:  #dc001a7c!important;
 }
-
 #sidepanel-toggler{
 	color: #dc001b!important;
 }

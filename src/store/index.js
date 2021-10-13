@@ -174,6 +174,32 @@ export default createStore({
            console.error(err)
          }
     },
+    async getCurrentHistorico({commit },id){
+      try{
+   
+        const token = localStorage.getItem('token')
+       const response = await fetch('http://localhost:8000/api/reserves/search/user/'+id,
+       {
+         headers: {
+           Accept: 'application/json',
+           'Content-type': 'application/json',
+           "Authorization" : `Bearer ${token}`
+           
+       }
+       })
+       const data = await response.json()
+     
+       commit('setCurrentRequest',data)
+      
+       
+       
+   
+      }
+         catch(err) {
+    
+           console.error(err)
+         }
+    },
 
     async register({commit},data){
       try{

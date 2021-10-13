@@ -28,8 +28,8 @@ setup(){
 }
 </script>
 
-<style lang="scss">
-    .item{
+<style>
+    /* .item{
         padding: 1rem 0.5rem;
         background-color: var(--background-card);
         text-align: center;
@@ -38,5 +38,5 @@ setup(){
             color: var(--text-orange);
         }
         
-    }
+    } */
 </style>

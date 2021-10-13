@@ -38,7 +38,7 @@
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">
-		            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"><span class="logo-text">PORTAL</span></a>
+		            <router-link class="app-logo" :to="{name : 'Home'}"><img class="logo-icon me-2" src="../assets/images/background/fundacion-don-bosco.jpg" alt="logo"><span class="logo-text">PORTAL</span></router-link>
 	
 		        </div><!--//app-branding-->  
 		        

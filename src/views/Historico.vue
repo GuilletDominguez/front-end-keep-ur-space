@@ -313,7 +313,7 @@
 			    
 			    <div class="row g-3 mb-4 align-items-center justify-content-between">
 				    <div class="col-auto">
-			            <h1 class="app-page-title mb-0">Historico</h1>
+			            <h1 class="app-page-title mb-0">Tus peticiones</h1>
 				    </div>
 				    <div class="col-auto">
 					     <div class="page-utilities">
@@ -334,7 +334,7 @@
 								
 							 
 							    <div class="col-auto">						    
-		
+									
 							
 							    </div>
 						    </div>
@@ -351,6 +351,7 @@
 					    <div class="app-card app-card-orders-table shadow-sm mb-5">
 						    <div class="app-card-body">
 							    <div class="table-responsive">
+									<nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4"><a class="flex-sm-fill text-sm-center nav-link item" id="orders-all-tab" data-bs-toggle="tab" role="tab" aria-controls="orders-all" aria-selected="false">Todas</a><a class="flex-sm-fill text-sm-center nav-link item active" id="orders-paid-tab" data-bs-toggle="tab" role="tab" aria-controls="orders-paid" aria-selected="true">Enviadas</a><a class="flex-sm-fill text-sm-center nav-link item" id="orders-pending-tab" data-bs-toggle="tab" role="tab" aria-selected="false">Aceptadas</a><a class="flex-sm-fill text-sm-center nav-link item" id="orders-pending-tab" data-bs-toggle="tab" role="tab" aria-selected="false">Canceladas</a></nav>
 							        <table class="table app-table-hover mb-0 text-left">
 										<thead>
 											<tr>
@@ -369,7 +370,7 @@
 												<td class="cell"><span class="truncate">reunion  para informatica</span></td>
 												<td class="cell">10/02/2021</td>
 												<td class="cell"><span class="note">12:16 PM</span></td>
-												<td class="cell"><span class="badge bg-success">Aceptado</span></td>
+												<td class="cell"><span class="badge bg-warning">Enviado</span></td>
 												<td class="cell">5</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -378,7 +379,7 @@
 												<td class="cell"><span class="truncate">reunion de mayores 45</span></td>
 												<td class="cell">04/03/2021</td>
 												<td class="cell"><span class="note">03:16 AM</span></td>
-												<td class="cell"><span class="badge bg-warning">Aceptado</span></td>
+												<td class="cell"><span class="badge bg-warning">Enviado</span></td>
 												<td class="cell">4</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -387,7 +388,7 @@
 												<td class="cell"><span class="truncate">reunion asociacion libro</span></td>
 												<td class="cell">05/07/2021</td>
 												<td class="cell"><span class="note">01:16 AM</span></td>
-												<td class="cell"><span class="badge bg-success">Aceptada</span></td>
+												<td class="cell"><span class="badge bg-warning">Enviado</span></td>
 												<td class="cell">5</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -397,7 +398,7 @@
 												<td class="cell"><span class="truncate">reunion compañeros orienta</span></td>
 												<td class="cell">06/08/2021</td>
 												<td class="cell"><span class="note">8:07 AM</span></td>
-												<td class="cell"><span class="badge bg-success">Aceptada</span></td>
+												<td class="cell"><span class="badge bg-warning">Enviado</span></td>
 												<td class="cell">1</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -407,7 +408,7 @@
 												<td class="cell"><span class="truncate">reunion empresa local</span></td>
 												<td class="cell">12/08/2021</td>
 												<td class="cell"><span class="note">04:23 PM</span></td>
-												<td class="cell"><span class="badge bg-danger">Aceptada</span></td>
+												<td class="cell"><span class="badge bg-danger">Cancelado</span></td>
 												<td class="cell">5</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>
@@ -417,7 +418,7 @@
 												<td class="cell"><span class="truncate">reunion fin de temporada</span></td>
 												<td class="cell">25/09/2021</td>
 												<td class="cell"><span class="note">11:18 AM</span></td>
-												<td class="cell"><span class="badge bg-success">Aceptada</span></td>
+												<td class="cell"><span class="badge bg-success">Aceptado</span></td>
 												<td class="cell">4</td>
 												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
 											</tr>

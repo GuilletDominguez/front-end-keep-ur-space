@@ -58,6 +58,20 @@
 								 </span>
 					        </router-link><!--//nav-link-->
 					    </li><!--//nav-item-->
+						<li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <router-link class="nav-link" :to="{name: 'Calendar'}" exact-active-class="active">
+						        <span class="nav-icon">
+						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+  <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+</svg>
+						         </span>
+		                         <span class="nav-link-text">Calendario
+									 
+								 </span>
+					        </router-link><!--//nav-link-->
+						  </li>
 					 	 <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 					        <router-link class="nav-link" :to="{name: 'Request'}" exact-active-class="active">
@@ -67,7 +81,7 @@
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg>
 						         </span>
-		                         <span class="nav-link-text">Peticiones (Admin)
+		                         <span class="nav-link-text">Peticiones
 									 
 								 </span>
 					        </router-link><!--//nav-link-->

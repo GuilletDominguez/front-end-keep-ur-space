@@ -316,7 +316,7 @@
 						    </div><!--//app-card-body-->		
 						</div><!--//app-card-->
 						<div>
-							<iframe src="https://calendar.google.com/calendar/embed?src=a.vizarragavizarraga%40gmail.com&ctz=Europe%2FMadrid" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+							
 						</div>
 						<nav class="app-pagination">
 							<ul class="pagination justify-content-center">

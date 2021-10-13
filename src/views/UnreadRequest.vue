@@ -6,11 +6,6 @@
 		        <div class="app-header-content"> 
 		            <div class="row justify-content-between align-items-center">
 			        
-				    <div class="col-auto">
-					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
-						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
-					    </a>
-				    </div>
 		            <div class="search-mobile-trigger d-sm-none col">
 			            <i class="search-mobile-trigger-icon fas fa-search"></i>
 			        </div>
@@ -200,7 +195,10 @@
 			    
 			    <div class="row g-3 mb-4 align-items-center justify-content-between">
 				    <div class="col-auto">
-			            <h1 class="app-page-title mb-0">Peticiones pendientes</h1>
+						<router-link class="btn btn-link" :to="{name: 'Home'}">
+							<p id="atrás">&lt;&lt; Volver a Inicio</p>
+						</router-link>
+			            <h1 class="app-page-title mb-0">Últimas 10 peticiones pendientes</h1>
 				    </div>
 				    <div class="col-auto">
 					     <div class="page-utilities">
@@ -220,10 +218,7 @@
 										  
 								
 							 
-							    <div class="col-auto">						    
-		
-							
-							    </div>
+
 						    </div>
 					    </div>
 				    </div>
@@ -315,20 +310,6 @@
 						       
 						    </div><!--//app-card-body-->		
 						</div><!--//app-card-->
-
-						<nav class="app-pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item disabled">
-									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-							    </li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item">
-								    <a class="page-link" href="#">Next</a>
-								</li>
-							</ul>
-						</nav><!--//app-pagination-->
 						
 			        </div><!--//tab-pane-->
 			        

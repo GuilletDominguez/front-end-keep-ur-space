@@ -46,12 +46,13 @@
 				    
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
-						    <div class="app-card-body p-3 p-lg-4">
-							    <h4 class="stats-type mb-1">Pendientes</h4>
-							    <div class="stats-figure">{{stats.pending}}</div>
+							<router-link :to="{name: 'UnreadRequest'}">
+						    	<div class="app-card-body p-3 p-lg-4">
+							    	<h4 class="stats-type mb-1">Pendientes</h4>
+							    	<div class="stats-figure">{{stats.pending}}</div>
 							
-						    </div><!--//app-card-body-->
-						    
+						    	</div><!--//app-card-body-->
+							</router-link>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">

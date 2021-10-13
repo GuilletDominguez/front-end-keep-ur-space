@@ -20,7 +20,11 @@
 		            <div class="app-utilities col-auto">
 			         
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/background-5.jpg" alt="Pedro"></a>
+				            <!-- <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="../assets/images/background/background-5.jpg" alt="Pedro"></a> -->
+												<svg xmlns="http://www.w3.org/2000/svg" width="70" height="40" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+		
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 
 								<li><a class="dropdown-item" href="account.html">Cuenta</a></li>
@@ -82,9 +86,6 @@
 					        <router-link class="nav-link" :to="{name: 'Request'}" exact-active-class="active">
 						        <span class="nav-icon">
 
-						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 
 						     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-inbox-fill" viewBox="0 0 16 16">
   <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
@@ -130,11 +131,11 @@
 					    </li><!--//nav-item-->		
 
 					 
-						  <li class="nav-item">
+						 
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 
               <!--//////////////// NUEVO USUARIO ////////////////-->
-
+			<li class="nav-item">
               <router-link :to="{name:'Register'}" exact-active-class="active" class="nav-link">
                 <span class="nav-icon">
                   <svg
@@ -152,9 +153,22 @@
                 </span>
                 <span class="nav-link-text">Nuevo Usuario</span>
               </router-link>
+			</li>
+				<!-- ///////////////// PERFIL /////////////////// -->
+				<li class="nav-item">
+              <router-link :to="{name:'Perfil'}" exact-active-class="active" class="nav-link">
+                <span class="nav-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+</svg>
+                </span>
+                <span class="nav-link-text">Perfil Usuario</span>
+              </router-link>
+			</li>
+
 
               <!--//nav-link-->
-            </li>			    
+           			    
 
 				    </ul><!--//app-menu-->
 			    </nav><!--//app-nav-->
@@ -166,12 +180,12 @@
 						    <li class="nav-item">
 						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 						        <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
-
+										<span class="nav-icon">
 							           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
   <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
 </svg>
-							        </span>
+							         </span>
 			                        <span class="nav-link-text">Cerrar sesión</span>
 
 						        </a><!--//nav-link-->
@@ -187,52 +201,38 @@
 
 <script>
 export default {};
-
 </script>
 
 <style scoped>
-
-
 .app-user-dropdow img {
- 
- width: 70px; 
- height: 200px;
+  width: 70px;
+  height: 200px;
 }
-.app-branding .logo-icon{
-
-	width: 70px;
-	height: 60px;
+.app-branding .logo-icon {
+  width: 70px;
+  height: 60px;
 }
-
-
-
 .app-nav .nav-link.active {
-	color: #dc001b!important;
-	border-left: 3px solid #dc001b!important;
-	background: #dc001a17!important;
+  color: #dc001b !important;
+  border-left: 3px solid #dc001b !important;
+  background: #dc001a17 !important;
 }
-
-.app-sidepanel{
-	border-right: 1px solid #dc001a8f!important;
+.app-sidepanel {
+  border-right: 1px solid #dc001a8f !important;
 }
-
 .app-header {
-	border-bottom: 1px solid #dc001a8f!important;
+  border-bottom: 1px solid #dc001a8f !important;
 }
-
-.nav-link:hover{
-	color: #dc001b!important;
+.nav-link:hover {
+  color: #dc001b !important;
 }
-
 .dropdown-menu {
-	border: 1px solid  #dc001a7c!important;
+  border: 1px solid #dc001a7c !important;
 }
-
 hr {
-	background:  #dc001a7c!important;
+  background: #dc001a7c !important;
 }
-
-#sidepanel-toggler{
-	color: #dc001b!important;
+#sidepanel-toggler {
+  color: #dc001b !important;
 }
 </style>

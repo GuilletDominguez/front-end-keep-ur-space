@@ -45,6 +45,9 @@
 				    </div><!--//col-->
 				    
 				    <div class="col-6 col-lg-3">
+						<router-link class="btn" :to="{
+							name:'UnreadRequest'
+						}">
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Pendientes</h4>
@@ -53,6 +56,7 @@
 						    </div><!--//app-card-body-->
 						    
 					    </div><!--//app-card-->
+						</router-link>
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
@@ -65,7 +69,9 @@
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
+					
 					    <div class="app-card app-card-stat shadow-sm h-100">
+							
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Canceladas</h4>
 							    
@@ -73,6 +79,7 @@
 						    </div><!--//app-card-body-->
 						   
 					    </div><!--//app-card-->
+						
 				    </div><!--//col-->
 			    </div><!--//row-->
 			   
@@ -101,7 +108,11 @@
 							    <div class="intro">Accede rápidamente a crear una petición.</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Crear</a>
+							   <router-link class="btn app-btn-secondary" 
+							   :to="{
+								   name:'Reserve'
+
+							   }">Crear</router-link>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -128,7 +139,10 @@
 							    <div class="intro">Pellentesque varius, elit vel volutpat sollicitudin, lacus quam efficitur augue</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Consultar</a>
+							   <router-link class="btn app-btn-secondary" 
+							   :to="{
+								   name:'Request'
+							   }">Consultar</router-link>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -146,7 +160,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Configura tu perfi</h4>
+								        <h4 class="app-card-title">Configura tu perfil</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -155,7 +169,15 @@
 							    <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi molestie neque, et tincidunt velit turpis non enim.</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">Configurar</a>
+							   <router-link class="btn app-btn-secondary" 
+							   :to="{
+								   name: 'Perfil',
+								   params:{
+									   id: user_id
+								   }
+
+
+							   }">Configurar</router-link>
 						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 				    </div><!--//col-->
@@ -188,7 +210,8 @@ export default {
 setup() {
 	 const store = useStore()
 
-	const user = localStorage.getItem('user')
+	const user = localStorage.getItem('user');
+	const user_id = localStorage.getItem('user_id')
 	const stats = computed(()=>{
 
 		return store.state.stats
@@ -200,7 +223,8 @@ setup() {
 
 	return {
 	user,
-	stats
+	stats,
+	user_id
 	}
 
 
@@ -210,4 +234,17 @@ setup() {
 }
 </script>
 
+<style scoped>
+svg{
+	color: red
+}
+.border-left-decoration{
+	border-left-color: red!important;;
+}
+
+.app-btn-secondary:hover{
+ color: red!important;
+ border-color: red!important;
+}
+</style>
 

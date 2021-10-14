@@ -12,11 +12,13 @@ export default createStore({
     currentUser:[],
     requestFilter:[],
     rooms:[],
+    listUser:[],
     oneRequest:[],
     pagination:[],
     oneUser:[],
     oneRoom:[],
     stats:[]
+
     
 
   },
@@ -33,6 +35,19 @@ export default createStore({
     setRooms(state, payload) {
       state.rooms = payload;
     },
+
+    setlistUser(state,payload){
+      state.listUser = payload;
+    },
+
+
+    setPagination(state,payload){
+      state.pagination = payload;
+    },
+    setStats(state,payload){
+      state.stats = payload;
+    }
+
 
 
   },
@@ -239,6 +254,38 @@ export default createStore({
            console.error(err)
          }
     },
+    async getlistUser({commit}){
+      try{
+ 
+        const token = localStorage.getItem('token')
+       const response = await fetch('http://localhost:8000/api/users',{
+
+
+
+
+
+         headers: {
+
+           Accept: 'application/json',
+           'Content-type': 'application/json',
+           "Authorization" : `Bearer ${token}`
+           
+       }
+       })
+       const data = await response.json()
+     
+       commit('setlistUser',data)
+      
+       
+       
+   
+      }
+         catch(err) {
+           //  this.$router.replace({ path: 'Login' })
+           console.error(err)
+         }
+    },
+
 
     /////////// Fin llamada PERFIL de un usuario///////////////////
 
@@ -266,7 +313,6 @@ export default createStore({
       }
     },
 
-    
 
     async getOneRequest({commit},id){
       try{

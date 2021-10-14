@@ -7,8 +7,9 @@ import Register from "../views/Register.vue";
 import Perfil from "../views/Perfil.vue";
 import Historico from "../views/Historico.vue";
 import UnreadRequest from '../views/UnreadRequest.vue'
-
 import Calendar from '../views/Calendar.vue'
+import ListaUsuario from "../views/ListaUsuario.vue";
+
 
 
 
@@ -26,21 +27,18 @@ const routes = [
       },
 
       {
+
+        path: "/listaUsuario",
+        name: "ListaUsuario",
+        component: ListaUsuario,
+      },
+
+      {
         path: "/historico",
         name: "Historico",
         component: Historico,
       },
 
-
-      {
-        path: "/about",
-        name: "About",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-          import(/* webpackChunkName: "about" */ "../views/About.vue"),
-      },
       {
         path: "/register",
         name: "Register",
@@ -71,14 +69,6 @@ const routes = [
       },
 
 
-          {
-      path: '/reserve',
-      name: 'Reserve',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/Reserve.vue')
-    },
     {
     path: '/request/:id',
     name: 'SingleRequest',

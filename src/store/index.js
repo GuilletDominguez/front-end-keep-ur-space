@@ -46,6 +46,18 @@ export default createStore({
     },
     setStats(state,payload){
       state.stats = payload;
+    },
+
+    setOneRequest(state,payload){
+      state.oneRequest = payload;
+    },
+
+    setOneUser(state,payload){
+      state.oneUser = payload;
+    },
+
+    setOneRoom(state,payload){
+      state.oneRoom = payload;
     }
 
 
@@ -385,6 +397,30 @@ export default createStore({
         console.error(err);
       }
     },
+
+    async pendingReserves({commit}){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/pending',{
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        const res = await response.json()
+        commit('setRequestFilter',res)
+        
+        
+       
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    },
+    
   },
 
   modules: {},

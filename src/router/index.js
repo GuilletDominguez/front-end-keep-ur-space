@@ -39,11 +39,10 @@ const routes = [
         component: Historico,
       },
 
-
-
       {
 
       path: "/register",
+
         name: "Register",
         component: Register,
       },

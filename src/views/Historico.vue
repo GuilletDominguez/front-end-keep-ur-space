@@ -324,22 +324,27 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="cell">#15346</td>
-                          <td class="cell">
-                            <span class="truncate"
-                              >reunion para informatica</span
-                            >
-                          </td>
-                          <td class="cell">10/02/2021</td>
-                          <td class="cell">
-                            <span class="note">12:16 PM</span>
-                          </td>
-                          <td class="cell">
-                            <span class="badge bg-success">Aceptado</span>
-                          </td>
-                          <td class="cell">5</td>
-                        </tr>
+               <tr v-for="request in requests" :key="request.id">
+												<td class="cell">{{request.id}}</td>
+												<td class="cell"><span class="truncate">{{request.description}}</span></td>
+								
+
+              
+												<td class="cell"><span><b>Inicio:</b> {{request.dateStart}} <br> <b>Final:</b> {{request.dateEnd}}</span></td>
+                                                <td class="cell"><span><b>Inicio:</b> {{request.hourStart}} <br> <b>Final:</b> {{request.hourEnd}}</span></td>
+												<td class="cell">
+													<span class="badge bg-success" v-if="request.status == 'Accepted'">Aceptada</span>
+													<span class="badge bg-warning" v-else>Pendiente</span>
+												</td>
+												<td class="cell">{{request.room.name}}</td>
+												<td class="cell">
+                          <router-link class="btn-sm app-btn-secondary"
+                           :to="{
+													name: 'SingleRequest',
+													params: {id: request.id}
+												}">View
+                        </router-link></td>
+											</tr>
                       </tbody>
                     </table>
                   </div>

@@ -243,6 +243,7 @@
 											<tr>
 												<th class="cell">Id</th>
 												<th class="cell">Descripción</th>
+												<th class="cell">Usuario</th>
 												<th class="cell">Fecha</th>
 												<th class="cell">Hora</th>
 												<th class="cell">Estado</th>
@@ -251,63 +252,23 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td class="cell">#15346</td>
-												<td class="cell"><span class="truncate">Reunión con Obama</span></td>
-												<td class="cell">10/02/2021</td>
-												<td class="cell"><span class="note">12:16 PM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">5</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
+											<tr v-for="request in requests" :key="request.id">
+											<td class="cell">{{request.id}}</td>
+												<td class="cell"><span class="truncate">{{request.description}}</span></td>
+												<td class="cell">{{request.user.name}}</td>
+												<td class="cell"><span><b>Inicio:</b> {{request.dateStart}} <br> <b>Final:</b> {{request.dateEnd}}</span></td>
+                                                <td class="cell"><span><b>Inicio:</b> {{request.hourStart}} <br> <b>Final:</b> {{request.hourEnd}}</span></td>
+												<td class="cell">
+													<span class="badge bg-success" v-if="request.status == 'Accepted'">Aceptada</span>
+													<span class="badge bg-warning" v-else>Pendiente</span>
+												</td>
+												<td class="cell">{{request.room.name}}</td>
+												<td class="cell"><router-link class="btn-sm app-btn-secondary" :to="{
+													name: 'SingleRequest',
+													params: {id: request.id}
+												}">Ver petición</router-link></td>
 											</tr>
-											<tr>
-												<td class="cell">#15345</td>
-												<td class="cell"><span class="truncate">Reunión con Jesús</span></td>
-												<td class="cell">04/03/2021</td>
-												<td class="cell"><span class="note">03:16 AM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">4</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											<tr>
-												<td class="cell">#15344</td>
-												<td class="cell"><span class="truncate">Reunión con Antonio</span></td>
-												<td class="cell">05/07/2021</td>
-												<td class="cell"><span class="note">01:16 AM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">5</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-											<tr>
-												<td class="cell">#15343</td>
-												<td class="cell"><span class="truncate">Reunión con Manuel</span></td>
-												<td class="cell">06/08/2021</td>
-												<td class="cell"><span class="note">8:07 AM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">1</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-											<tr>
-												<td class="cell">#15342</td>
-												<td class="cell"><span class="truncate">Reunión con Rosario</span></td>
-												<td class="cell">12/08/2021</td>
-												<td class="cell"><span class="note">04:23 PM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">5</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-											<tr>
-												<td class="cell">#15341</td>
-												<td class="cell"><span class="truncate">Reunión con Guillermo</span></td>
-												<td class="cell">25/09/2021</td>
-												<td class="cell"><span class="note">11:18 AM</span></td>
-												<td class="cell"><span class="badge bg-danger">Pendiente</span></td>
-												<td class="cell">4</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
+										
 		
 										</tbody>
 									</table>
@@ -316,154 +277,10 @@
 						    </div><!--//app-card-body-->		
 						</div><!--//app-card-->
 
-						<nav class="app-pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item disabled">
-									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-							    </li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item">
-								    <a class="page-link" href="#">Next</a>
-								</li>
-							</ul>
-						</nav><!--//app-pagination-->
 						
 			        </div><!--//tab-pane-->
 			        
-			        <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
-					    <div class="app-card app-card-orders-table mb-5">
-						    <div class="app-card-body">
-							    <div class="table-responsive">
-								    
-							        <table class="table mb-0 text-left">
-										<thead>
-											<tr>
-												<th class="cell">Order</th>
-												<th class="cell">Product</th>
-												<th class="cell">Customer</th>
-												<th class="cell">Date</th>
-												<th class="cell">Status</th>
-												<th class="cell">Total</th>
-												<th class="cell"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="cell">#15346</td>
-												<td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget volutpat erat</span></td>
-												<td class="cell">John Sanders</td>
-												<td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span></td>
-												<td class="cell"><span class="badge bg-success">Paid</span></td>
-												<td class="cell">$259.35</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-											<tr>
-												<td class="cell">#15344</td>
-												<td class="cell"><span class="truncate">Pellentesque diam imperdiet</span></td>
-												<td class="cell">Teresa Holland</td>
-												<td class="cell"><span class="cell-data">16 Oct</span><span class="note">01:16 AM</span></td>
-												<td class="cell"><span class="badge bg-success">Paid</span></td>
-												<td class="cell">$123.00</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-											<tr>
-												<td class="cell">#15343</td>
-												<td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed mollis ipsum</span></td>
-												<td class="cell">Jayden Massey</td>
-												<td class="cell"><span class="cell-data">15 Oct</span><span class="note">8:07 PM</span></td>
-												<td class="cell"><span class="badge bg-success">Paid</span></td>
-												<td class="cell">$199.00</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-										
-											
-											<tr>
-												<td class="cell">#15341</td>
-												<td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span></td>
-												<td class="cell">Raymond Atkins</td>
-												<td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
-												<td class="cell"><span class="badge bg-success">Paid</span></td>
-												<td class="cell">$678.26</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-		
-										</tbody>
-									</table>
-						        </div><!--//table-responsive-->
-						    </div><!--//app-card-body-->		
-						</div><!--//app-card-->
-			        </div><!--//tab-pane-->
-			        
-			        <div class="tab-pane fade" id="orders-pending" role="tabpanel" aria-labelledby="orders-pending-tab">
-					    <div class="app-card app-card-orders-table mb-5">
-						    <div class="app-card-body">
-							    <div class="table-responsive">
-							        <table class="table mb-0 text-left">
-										<thead>
-											<tr>
-												<th class="cell">Order</th>
-												<th class="cell">Product</th>
-												<th class="cell">Customer</th>
-												<th class="cell">Date</th>
-												<th class="cell">Status</th>
-												<th class="cell">Total</th>
-												<th class="cell"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="cell">#15345</td>
-												<td class="cell"><span class="truncate">Consectetur adipiscing elit</span></td>
-												<td class="cell">Dylan Ambrose</td>
-												<td class="cell"><span class="cell-data">16 Oct</span><span class="note">03:16 AM</span></td>
-												<td class="cell"><span class="badge bg-warning">Pending</span></td>
-												<td class="cell">$96.20</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-										</tbody>
-									</table>
-						        </div><!--//table-responsive-->
-						    </div><!--//app-card-body-->		
-						</div><!--//app-card-->
-			        </div><!--//tab-pane-->
-			        <div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
-					    <div class="app-card app-card-orders-table mb-5">
-						    <div class="app-card-body">
-							    <div class="table-responsive">
-							        <table class="table mb-0 text-left">
-										<thead>
-											<tr>
-												<th class="cell">Order</th>
-												<th class="cell">Product</th>
-												<th class="cell">Customer</th>
-												<th class="cell">Date</th>
-												<th class="cell">Status</th>
-												<th class="cell">Total</th>
-												<th class="cell"></th>
-											</tr>
-										</thead>
-										<tbody>
-											
-											<tr>
-												<td class="cell">#15342</td>
-												<td class="cell"><span class="truncate">Justo feugiat neque</span></td>
-												<td class="cell">Reina Brooks</td>
-												<td class="cell"><span class="cell-data">12 Oct</span><span class="note">04:23 PM</span></td>
-												<td class="cell"><span class="badge bg-danger">Cancelled</span></td>
-												<td class="cell">$59.00</td>
-												<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-											</tr>
-											
-										</tbody>
-									</table>
-						        </div><!--//table-responsive-->
-						    </div><!--//app-card-body-->	
-						</div><!--//app-card-->
-			        </div><!--//tab-pane-->
+			      
 				</div><!--//tab-content-->
 				
 				
@@ -482,8 +299,27 @@
 </template>
 
 <script>
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 export default {
+	setup() {
 
+    const store = useStore()
+
+    const requests = computed(() =>{
+		
+      return store.state.requestFilter
+
+    })
+ onMounted(() => {
+      store.dispatch('getCurrentRequest')
+    })
+	return{
+		requests
+	}
+	}
+
+	
 }
 </script>
 

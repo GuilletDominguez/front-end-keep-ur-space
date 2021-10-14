@@ -85,9 +85,7 @@ export default {
 setup() {
 
     const store = useStore()
-
     const user = computed(() =>{
-
     return localStorage.getItem('user')
     
     })
@@ -105,11 +103,9 @@ setup() {
 
     const rooms = computed(() =>{
       return store.state.rooms
-
     })
     
-    const request = ((a)=>{
-      
+    const request = ((a)=>{      
         console.log(data)
          store.dispatch('createRequest',data)
     })
@@ -119,24 +115,21 @@ setup() {
     })
 
     const onChange = ((value) =>{
-            data.room_id = value
-            
+            data.room_id = value            
         })
     return {
 
-     user,
-     rooms,
-     request,
+    user,
+    rooms,
+    request,
     data,
     selected,
     onChange
     }
-
-
   },
-methods:{
+    methods:{
  
-}
+        }
     }
 </script>
 

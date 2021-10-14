@@ -1,3 +1,4 @@
+
 <template>
   <div class="app app-signup p-0">
     <div class="row g-0 app-auth-wrapper">
@@ -190,4 +191,5 @@ return {
   width: 101px;
   height: 67px;
 }
+
 </style>

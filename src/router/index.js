@@ -40,14 +40,17 @@ const routes = [
       },
 
       {
-        path: "/register",
+
+      path: "/register",
+
         name: "Register",
         component: Register,
       },
       {
-        path: "/perfil",
+        path: "/perfil/:id",
         name: "Perfil",
         component: Perfil,
+        props:true
       },
       {
         path: "/request",

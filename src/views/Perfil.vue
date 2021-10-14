@@ -169,9 +169,9 @@ import { useStore } from 'vuex'
 
 
 export default {
-  
-  setup() { 
-   const userId = localStorage.getItem('user_id');  
+  props:['id'],
+  setup(id) { 
+   const userId = id.id;  
    const store = useStore();
    const user = computed(() => {
     

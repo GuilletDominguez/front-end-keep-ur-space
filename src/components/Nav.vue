@@ -30,7 +30,7 @@
 								<li><a class="dropdown-item" href="account.html">Cuenta</a></li>
 								
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+								<li><router-link @click.prevent="logOut" class="dropdown-item" :to="{name : 'Login'}">Cerrar sesión</router-link></li>
 
 							</ul>
 			            </div><!--//app-user-dropdown--> 
@@ -181,7 +181,10 @@
 						    <li class="nav-item">
 						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 								
-						        <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
+						        <router-link class="nav-link" 
+								:to="{name : 'Login'}"
+								@click.prevent="logOut"
+								>
 
 <span class="nav-icon">
 
@@ -192,7 +195,7 @@
 							         </span>
 			                        <span class="nav-link-text">Cerrar sesión</span>
 
-						        </a><!--//nav-link-->
+						        </router-link><!--//nav-link-->
 						    </li><!--//nav-item-->
 					    </ul><!--//footer-menu-->
 				    </nav>
@@ -204,7 +207,25 @@
 </template>
 
 <script>
-export default {};
+import { useStore } from 'vuex'
+export default {
+
+setup() {
+	const store = useStore();
+
+	const logOut = (()=>{
+
+		store.dispatch('logOut')
+	})
+
+	return {
+		logOut
+	}
+}
+
+
+
+};
 </script>
 
 <style scoped>

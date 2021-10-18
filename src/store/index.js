@@ -237,56 +237,35 @@ export default createStore({
          headers: {
            Accept: 'application/json',
            'Content-type': 'application/json',
-           "Authorization" : `Bearer ${token}`
-           
+           "Authorization" : `Bearer ${token}`           
        }
        })
-       const data = await response.json()
-     
-       commit('setCurrentRequest',data)
-      
-       
-       
-   
+       const data = await response.json()     
+       commit('setCurrentRequest',data)   
       }
-         catch(err) {
-    
+         catch(err) {    
            console.error(err)
          }
     },
     async getlistUser({commit}){
-      try{
- 
-        const token = localStorage.getItem('token')
+      try{ 
+       const token = localStorage.getItem('token')
        const response = await fetch('http://localhost:8000/api/users',{
 
-
-
-
-
          headers: {
-
            Accept: 'application/json',
            'Content-type': 'application/json',
-           "Authorization" : `Bearer ${token}`
-           
+           "Authorization" : `Bearer ${token}`           
        }
        })
-       const data = await response.json()
-     
-       commit('setlistUser',data)
-      
-       
-       
-   
+       const data = await response.json()     
+       commit('setlistUser',data)             
       }
          catch(err) {
            //  this.$router.replace({ path: 'Login' })
            console.error(err)
          }
     },
-
-
     /////////// Fin llamada PERFIL de un usuario///////////////////
 
     /////////// EDITAR PERFIL ////////////////////
@@ -352,20 +331,12 @@ export default createStore({
         }
         })
         const res = await response.json()
-        commit('setStats',res)
-        
-        
-       
-    
+        commit('setStats',res)         
        }
           catch(err) {
             console.error(err)
           }
-    },
-
-    
-    
-
+    },   
 
     ///////    BORRAR PERFIL ///////
     async delete({ commit }, id) {
@@ -373,6 +344,26 @@ export default createStore({
         const token = localStorage.getItem("token");
         const response = await fetch("http://localhost:8000/api/users/"+id, {
           method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentUser", res);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+
+    ////////////////// CAMBIAR CONTRASEÑA /////////////////
+    async changePassword({ commit }, data) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/profile/security/"+data.id, {
+          method: "PUT",
+          body: JSON.stringify(data),
           headers: {
             Accept: "application/json",
             "Content-type": "application/json",

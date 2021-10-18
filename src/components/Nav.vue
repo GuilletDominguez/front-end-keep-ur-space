@@ -1,79 +1,44 @@
 <template>
   <!--//app-header-->
-  <div class="app-header fixed-top">
-    <div class="app-header-inner">
-      <div class="container-fluid py-2">
-        <div class="app-header-content">
-          <div class="row justify-content-between align-items-center">
-            <div class="col-auto">
-              <a
-                id="sidepanel-toggler"
-                class="sidepanel-toggler d-inline-block d-xl-none"
-                href="#"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
-                  role="img"
-                >
-                  <title>Menu</title>
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
-                    d="M4 7h22M4 15h22M4 23h22"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-            <!--//col-->
-            <div class="search-mobile-trigger d-sm-none col">
-              <i class="search-mobile-trigger-icon fas fa-search"></i>
-            </div>
-            <!--//col-->
 
-            <div class="app-utilities col-auto">
-              <div class="app-utility-item app-user-dropdown dropdown">
-                <a
-                  class="dropdown-toggle"
-                  id="user-dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="70"
-                    height="40"
-                    fill="currentColor"
-                    class="bi bi-person-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                    /></svg
-                ></a>
+  <div class="app-header fixed-top">	   	            
+        <div class="app-header-inner">  
+	        <div class="container-fluid py-2">
+		        <div class="app-header-content"> 
+		            <div class="row justify-content-between align-items-center">
+			        
+				    <div class="col-auto">
+					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+					    </a>
+				    </div><!--//col-->
+		            <div class="search-mobile-trigger d-sm-none col">
+			            <i class="search-mobile-trigger-icon fas fa-search"></i>
+			        </div><!--//col-->
+		        
+		            
+		            <div class="app-utilities col-auto">
+			         
+			            <div class="app-utility-item app-user-dropdown dropdown">
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">											<svg xmlns="http://www.w3.org/2000/svg" width="70" height="40" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg></a>
+	
+		
+				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="user-dropdown-toggle"
-                >
-                  <li>
-                    <router-link
-                      class="dropdown-item"
-                      :to="{
-                        name: 'Perfil',
-                        params: { id: userId },
-                      }"
-                      >Cuenta
-                    </router-link>
+								  <li>
+                    <router-link class="dropdown-item"  :to="{
+                    name:'Perfil',
+                    params: {id: userId}
+                  
+                    }">Cuenta </router-link>
                   </li>
+								
+								<li><hr class="dropdown-divider"></li>
+							
 
-                  <li><hr class="dropdown-divider" /></li>
+                
 
                   <li>
                     <!-- <a class="dropdown-item" href="login.html">Cerrar sesión</a> -->
@@ -91,13 +56,13 @@
               <!--//app-user-dropdown-->
             </div>
             <!--//app-utilities-->
-          </div>
+     
           <!--//row-->
-        </div>
+       
         <!--//app-header-content-->
-      </div>
+      
       <!--//container-fluid-->
-    </div>
+   
     <!--//app-header-inner-->
     <div id="app-sidepanel" class="app-sidepanel">
       <div id="sidepanel-drop" class="sidepanel-drop"></div>
@@ -119,6 +84,7 @@
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
           <ul class="app-menu list-unstyled accordion" id="menu-accordion">
             <li class="nav-item">
+
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
               <router-link
                 class="nav-link"
@@ -285,18 +251,9 @@
                 </span>
                 <span class="nav-link-text">Nuevo Usuario</span>
               </router-link>
-            </li>
-            <!-- ///////////////// PERFIL /////////////////// -->
-            <li class="nav-item"></li>
-          </ul>
-          <!--//app-menu-->
-        </nav>
-        <!--//app-nav-->
-        <div class="app-sidepanel-footer">
-          <nav class="app-nav app-nav-footer">
-            <ul class="app-menu footer-menu list-unstyled">
-              <li class="nav-item">
-                <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+			</li>
+				<!-- ///////////////// PERFIL /////////////////// -->
+				<li class="nav-item">
 
                 <a
                   class="nav-link"
@@ -376,15 +333,27 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 export default {
-  setup() {
-    const userId = localStorage.getItem("user_id");
 
-    return {
-      userId,
-    };
-  },
+setup() {
+	const store = useStore();
+  const userId = localStorage.getItem('user_id')
+	const logOut = (()=>{
+
+		store.dispatch('logOut')
+	})
+
+	return {
+		logOut,
+    userId
+	}
+}
+
+
+
 };
+
 </script>
 
 <style scoped>

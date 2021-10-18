@@ -420,6 +420,33 @@ export default createStore({
             console.error(err)
           }
     },
+
+    async logOut({commit}){
+      try{
+
+        const token = localStorage.getItem('token')
+        const response = await fetch('http://localhost:8000/api/logout',{
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+            "Authorization" : `Bearer ${token}`
+        }
+        })
+        localStorage.removeItem('user');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('token');
+        const res = await response.json()
+        commit('setCurrentUser',res)
+        
+        
+       
+    
+       }
+          catch(err) {
+            console.error(err)
+          }
+    }
     
   },
 

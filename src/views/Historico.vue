@@ -342,7 +342,7 @@
                            :to="{
 													name: 'SingleRequest',
 													params: {id: request.id}
-												}">View
+												}">Ver
                         </router-link></td>
 											</tr>
                       </tbody>

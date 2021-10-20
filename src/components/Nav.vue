@@ -41,7 +41,7 @@
                 
 
                   <li>
-                    <!-- <a class="dropdown-item" href="login.html">Cerrar sesión</a> -->
+                     <!-- <a class="dropdown-item" href="login.html">Cerrar sesión</a> -->
                     <button
                       type="button"
                       class="dropdown-item"
@@ -55,7 +55,7 @@
               </div>
               <!--//app-user-dropdown-->
             </div>
-            <!--//app-utilities-->
+            <!-- //app-utilities-->
      
           <!--//row-->
        
@@ -63,7 +63,7 @@
       
       <!--//container-fluid-->
    
-    <!--//app-header-inner-->
+                </div> <!--//app-header-inner -->
     <div id="app-sidepanel" class="app-sidepanel">
       <div id="sidepanel-drop" class="sidepanel-drop"></div>
       <div class="sidepanel-inner d-flex flex-column">
@@ -294,42 +294,34 @@
     </div>
     <!--//app-sidepanel-->
   </div>
-  <!--//app-header-->
+
   <!-- Button trigger modal -->
 
   <!-- Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+ 
+          </div>
         </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">Guardar</button>
-        </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <router-link to="/login" type="button" class="btn btn-primary">Cerrar sesion</router-link> 
       </div>
     </div>
   </div>
+</div>
+        
 </template>
 
 <script>
@@ -388,4 +380,5 @@ hr {
 #sidepanel-toggler {
   color: #dc001b !important;
 }
+
 </style>

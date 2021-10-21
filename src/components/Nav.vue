@@ -312,11 +312,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+       ¿Estás seguro de que quieres cerrar la sesión?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <router-link to="/login" type="button" class="btn btn-primary">Cerrar sesion</router-link> 
+        <button type="button" class="btn btn-primary" @click.prevent="logOut()" data-bs-dismiss="modal">Sí, quiero cerrar sesion</button>
       </div>
     </div>
   </div>
@@ -326,14 +326,17 @@
 
 <script>
 import { useStore } from 'vuex'
+
 export default {
 
 setup() {
 	const store = useStore();
   const userId = localStorage.getItem('user_id')
+  
 	const logOut = (()=>{
 
-		store.dispatch('logOut')
+		store.dispatch('logOut');
+    window.location.replace('/login')
 	})
 
 	return {
@@ -353,6 +356,11 @@ setup() {
   width: 70px;
   height: 200px;
 }
+
+.modal-backdrop.show{
+  opacity: 0 !important;
+}
+
 .app-branding .logo-icon {
   width: 70px;
   height: 60px;

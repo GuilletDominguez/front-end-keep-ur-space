@@ -217,7 +217,7 @@ import { useStore } from 'vuex'
 export default {
   props:['id'],
   setup(id) { 
-   const userId = id.id;  
+   const userId = id.id;
    const store = useStore();
    const user = computed(() => {
     

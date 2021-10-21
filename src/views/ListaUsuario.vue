@@ -111,38 +111,19 @@ export default {
   setup() {
 
     const store = useStore()
-
     const users = computed(() =>{
-
-  
-    
       return store.state.listUser
-
     })
-
     onMounted(() => {
       store.dispatch('getlistUser')
-    })
-
-    
+    })   
 
     return {
-users
+      users
 
     }
-
-
   }
-
-
 };
-
-
-
-
-
-
-
 
 </script>
 

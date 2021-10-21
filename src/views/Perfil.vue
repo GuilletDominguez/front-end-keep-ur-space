@@ -101,16 +101,62 @@
                         <a class="btn-sm app-btn-secondary" >Cambiar</a>
                       </div> -->
                       <!--//col-->
-                    </div>
+                    </div>                  
                     <!--//row-->
                   </div>
+                <!-- <div>
+                  <button >Abrir</button>
+                  
+                </div> -->
 
                   <div class="item border-bottom py-3">
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
-                        <div class="item-label"><strong> Nueva Contraseña</strong></div>
-                        <input v-model="user.password" id="password" class="item-data" type="text" placeholder="Contraseña">
-                      </div>             
+
+                    <!-- <button @click.prevent="ventana=true" class="btn app-btn-secondary mx-1" >Modificar Contraseña</button> -->
+
+                    <!-- <div v-bind:="ventana" v-if="ventana">
+                      <form name="formName" action="" method="POST" onsubmit='return validatePassword()'>
+                        <label>Password Actual: </label> <input type="password" name="passwordActual"><br>
+                        <label>Nuevo Password:  </label> <input type="password" name="passwordNew1"><br>
+                        <label>Repite Password: </label> <input type="password" name="passwordNew2"> <br>
+                        <button @click.prevent="updatePassword()"  class="btn app-btn-secondary mx-3" type="submit" value="Confirmar Password">Confirmar</button>
+                      </form>
+                      
+                    </div> -->
+
+
+                    <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   Modificar Contraseña
+                  </button>
+
+                  <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">MODIFICAR CONTRASEÑA</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form name="formName" action="" >
+                       <p> <label>Password Actual: </label> <input v-model="data1.current_password" type="password" name="passwordActual"></p><hr>
+                        <label>Nueva Password:  </label> <input v-model="data1.password" type="password" name="nuevaPassword"><br><br>
+                        <label>Repite Password: </label> <input v-model="data1.password_confirmation" type="password" name="password_confirmation"> <br>                        
+                      </form>
+                    </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button @click.prevent="changePassword()" type="submit" class="btn btn-primary">Salvar cambios</button>
+                    </div>
+    </div>
+  </div>
+</div>
+
+                        <!-- <div class="item-label"><strong> Nueva Contraseña</strong></div>
+                        <input v-model="user.password" id="password" class="item-data" type="text" placeholder="Contraseña"> -->
+                  </div>                                  
                       <!--//col-->
                       <!-- <div class="col text-end">
                         <a class="btn-sm app-btn-secondary" >Cambiar</a>
@@ -186,9 +232,9 @@ export default {
           id: data.value.id,
           name: data.value.name,
           email: data.value.email,
-          password: 'password',
+          
           phone_number: 'none',
-          rol_id: data.value.rol_id
+          rol_id: data.value.rol_id,          
         }    
         console.log(currentUser)   
         store.dispatch('update', currentUser)    
@@ -198,12 +244,31 @@ export default {
     
     store.dispatch('delete', userId)
   })
-      return{       
-      user,
-      updateUser,
-      deleteUser
+
+/////////// CAMBIAR CONTRASEÑA /////////
+  const data1 = { 
+    rol_id: 2,
+    password:'',
+    current_password:'',
+    id: userId,
+    password_confirmation:'',
+    
+    
+  }
+  const changePassword = (() => {
+    console.log(data1)
+      store.dispatch ('changePassword', data1)
+  })
+
+  return{
+    user,
+    updateUser, 
+    deleteUser,
+    changePassword,
+    data1    
     }
   },
+  
 } 
 
 

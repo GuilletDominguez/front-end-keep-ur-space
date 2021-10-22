@@ -36,17 +36,26 @@
                   </li>
 								
 								<li><hr class="dropdown-divider"></li>
-								<li><router-link @click.prevent="logOut" class="dropdown-item" :to="{name : 'Login'}">Cerrar sesión</router-link></li>
+							
 
-							</ul>
-			            </div><!--//app-user-dropdown--> 
-		            </div><!--//app-utilities-->
-		        </div><!--//row-->
-	            </div><!--//app-header-content-->
-	        </div><!--//container-fluid-->
-        </div><!--//app-header-inner-->
-       
-            <!--//app-utilities-->
+                
+
+                  <li>
+                     <!-- <a class="dropdown-item" href="login.html">Cerrar sesión</a> -->
+                    <button
+                      type="button"
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Cerrar sesion
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <!--//app-user-dropdown-->
+            </div>
+            <!-- //app-utilities-->
      
           <!--//row-->
        
@@ -54,7 +63,7 @@
       
       <!--//container-fluid-->
    
-    <!--//app-header-inner-->
+                </div> <!--//app-header-inner -->
     <div id="app-sidepanel" class="app-sidepanel">
       <div id="sidepanel-drop" class="sidepanel-drop"></div>
       <div class="sidepanel-inner d-flex flex-column">
@@ -245,66 +254,89 @@
 			</li>
 				<!-- ///////////////// PERFIL /////////////////// -->
 				<li class="nav-item">
-              <!-- <router-link :to="{ name:'Perfil',
-                    params: {id: user.id}}" exact-active-class="active" class="nav-link">
-                <span class="nav-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-</svg>
-                </span>
-                <span class="nav-link-text">Perfil Usuario</span>
-              </router-link> -->
-			</li>
+
+                <a
+                  class="nav-link"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <span class="nav-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-box-arrow-left"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="nav-link-text">Cerrar sesión</span></a
+                ><!--//nav-link-->
+              </li>
+              <!--//nav-item-->
+            </ul>
+            <!--//footer-menu-->
+          </nav>
+        </div>
+        <!--//app-sidepanel-footer-->
+      </div>
+      <!--//sidepanel-inner-->
+    </div>
+    <!--//app-sidepanel-->
+  </div>
+
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+ 
+          </div>
+        </div>
 
 
-              <!--//nav-link-->
-           			    
-
-				    </ul><!--//app-menu-->
-			    </nav><!--//app-nav-->
-			    <div class="app-sidepanel-footer">
-				    <nav class="app-nav app-nav-footer">
-					    <ul class="app-menu footer-menu list-unstyled">
-						   
-						   
-						    <li class="nav-item">
-						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-								
-						        <router-link class="nav-link" 
-								:to="{name : 'Login'}"
-								@click.prevent="logOut"
-								>
-
-<span class="nav-icon">
-
-							           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-</svg>
-							         </span>
-			                        <span class="nav-link-text">Cerrar sesión</span>
-
-						        </router-link><!--//nav-link-->
-						    </li><!--//nav-item-->
-					    </ul><!--//footer-menu-->
-				    </nav>
-			    </div><!--//app-sidepanel-footer-->
-		       
-	        </div><!--//sidepanel-inner-->
-	    </div><!--//app-sidepanel-->
-    </div><!--//app-header-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       ¿Estás seguro de que quieres cerrar la sesión?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" @click.prevent="logOut()" data-bs-dismiss="modal">Sí, quiero cerrar sesion</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
 </template>
 
 <script>
 import { useStore } from 'vuex'
+
 export default {
 
 setup() {
 	const store = useStore();
   const userId = localStorage.getItem('user_id')
+  
 	const logOut = (()=>{
 
-		store.dispatch('logOut')
+		store.dispatch('logOut');
+    window.location.replace('/login')
 	})
 
 	return {
@@ -324,6 +356,11 @@ setup() {
   width: 70px;
   height: 200px;
 }
+
+.modal-backdrop.show{
+  opacity: 0 !important;
+}
+
 .app-branding .logo-icon {
   width: 70px;
   height: 60px;
@@ -351,4 +388,5 @@ hr {
 #sidepanel-toggler {
   color: #dc001b !important;
 }
+
 </style>

@@ -94,13 +94,13 @@ return{
 <style scoped>
 
 .app-login .auth-background-holder {
-background: url(../assets/images/background/background-4.png) no-repeat center center  !important;
+background: url(../assets/images/background/background-4.png) no-repeat  center  !important;
 
 
 }
 
 h2{
-	margin: 50px;
+	margin: 60px;
 padding: -8px;
 }
 

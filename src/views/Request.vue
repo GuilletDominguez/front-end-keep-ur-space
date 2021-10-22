@@ -59,13 +59,14 @@
                                                 <td class="cell"><span><b>Inicio:</b> {{request.hourStart}} <br> <b>Final:</b> {{request.hourEnd}}</span></td>
 												<td class="cell">
 													<span class="badge bg-success" v-if="request.status == 'Accepted'">Aceptada</span>
-													<span class="badge bg-warning" v-else>Pendiente</span>
+													<span class="badge bg-warning" v-if="request.status == 'Pending'">Pendiente</span>
+													<span class="badge bg-danger" v-if="request.status == 'Cancelled'">Cancelada</span>
 												</td>
 												<td class="cell">{{request.room.name}}</td>
 												<td class="cell"><router-link class="btn-sm app-btn-secondary" :to="{
 													name: 'SingleRequest',
 													params: {id: request.id}
-												}">View</router-link></td>
+												}">Ver</router-link></td>
 											</tr>
 								
 										</tbody>

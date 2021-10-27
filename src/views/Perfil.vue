@@ -113,17 +113,7 @@
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
 
-                    <!-- <button @click.prevent="ventana=true" class="btn app-btn-secondary mx-1" >Modificar Contraseña</button> -->
-
-                    <!-- <div v-bind:="ventana" v-if="ventana">
-                      <form name="formName" action="" method="POST" onsubmit='return validatePassword()'>
-                        <label>Password Actual: </label> <input type="password" name="passwordActual"><br>
-                        <label>Nuevo Password:  </label> <input type="password" name="passwordNew1"><br>
-                        <label>Repite Password: </label> <input type="password" name="passwordNew2"> <br>
-                        <button @click.prevent="updatePassword()"  class="btn app-btn-secondary mx-3" type="submit" value="Confirmar Password">Confirmar</button>
-                      </form>
-                      
-                    </div> -->
+                   
 
 
                     <!-- Button trigger modal -->
@@ -137,7 +127,7 @@
                     <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">MODIFICAR CONTRASEÑA</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button id="modificar" type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <form name="formName" action="" >
@@ -166,14 +156,14 @@
                     <!--//row-->
                   </div>
 
-
+<!-- OCULTACION INPUP PERMISOS -->
                   <!--//item-->
-                  <div class="item border-bottom py-3">
+                  <div class="item border-bottom py-3" v-if="is_admin = 1 ">
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
                         <div class="item-label"><strong>Permisos</strong></div>
 
-                        <input v-model="user.rol_id" id="rol_id" class="item-data" type="text" placeholder="Permisos">
+                        <input v-model="user.is_admin" id="rol_id" class="item-data" type="text" placeholder="Permisos">
                       </div>
                       <!--//col-->
                       <!-- <div class="col text-end">
@@ -234,7 +224,7 @@ export default {
           email: data.value.email,
           
           phone_number: 'none',
-          rol_id: data.value.rol_id,          
+          is_admin: data.value.is_admin,          
         }    
         console.log(currentUser)   
         store.dispatch('update', currentUser)    
@@ -247,7 +237,7 @@ export default {
 
 /////////// CAMBIAR CONTRASEÑA /////////
   const data1 = { 
-    rol_id: 2,
+    is_admin: 2,
     password:'',
     current_password:'',
     id: userId,
@@ -276,6 +266,27 @@ export default {
 </script>
 
 <style scoped> 
+
+.btn-primary{
+color: white !important; 
+background-color :#dc001b !important;
+}
+.btn-primary:hover{ 
+color: white !important;
+}
+.app-btn-secondary{
+color: black !important; 
+background-color :#c4c4c4 !important;
+border-bottom: #c4c4c4 !important;
+}
+.app-btn-secondary:hover{ 
+  border: black solid 1px !important;
+}
+.app-card .app-icon-holder{
+  color: #dc001b;
+  background: #c4c4c4;
+}
+
 </style>
 
 

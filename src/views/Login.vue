@@ -88,28 +88,38 @@
 </template>
 
 <script>
-import { useStore } from "vuex";
 
+
+import { useStore } from 'vuex'
+import router from '../router';
 export default {
-  setup() {
-    const user = {
-      email: "",
-      password: "",
-    };
+setup(){
 
-    const store = useStore();
+const user = {
+	email: '',
+	password: '',
+}
 
-    const login = (a) => {
-      console.log(user);
-      store.dispatch("login", user);
-    };
+const store = useStore();
 
-    return {
-      login,
-      user,
-    };
-  },
-};
+const login = ((a) => {
+	console.log(user)
+	store.dispatch('login', user)
+	router.push({name: 'Home'})
+})
+
+return{
+	login,
+	user
+}
+
+
+
+
+}
+
+}
+
 </script>
 
 <style scoped>

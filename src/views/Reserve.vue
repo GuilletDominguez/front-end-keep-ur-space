@@ -105,7 +105,7 @@ setup() {
         hourStart : '',
         hourEnd : '',
         room_id: '',
-        description : ''
+        description : '',
     }
 
     const rooms = computed(() =>{

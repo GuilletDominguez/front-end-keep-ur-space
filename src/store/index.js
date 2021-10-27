@@ -114,7 +114,7 @@ export default createStore({
       commit("setRequestFilter", results);
     },
 
-    filterByName({ commit, state }, name) {
+    filterByName({ commit, state }, name) { 
       const formatName = name.toLowerCase();
       const results = state.currentRequest.filter((request) => {
         const requestName = request.user.name.toLowerCase();
@@ -398,6 +398,37 @@ export default createStore({
         console.error(err);
       }
     },
+
+    async updateRequest({commit}, data){
+
+      try {
+        console.log(data);
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/reserves/" + data.id, {
+          //data  dentro de body y en formato json
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        commit("setCurrentRequest", res);
+      } catch (err) {
+        console.error(err);
+      }
+
+
+
+    },
+
+    async auth(){
+
+     
+  }
+
   },
 
   modules: {},

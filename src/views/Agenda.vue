@@ -1,56 +1,55 @@
 <template>
-
-<Fullcalendar 
-    locale="es"
-    :plugins="calendarPlugins"
-    :header="{ //posicion del titulo, año
-        left: 'title',
-        center:'dayGridMonth, timeGridWeek, timeGridDay, ListWeek',
-        right:'prev today next'
-    }"
-    :buttontext="{
-        today: 'Hoy',
-        month: 'Mes',
-        week: 'Semana',
-        day: 'Día',
-        list: 'Listado'
-    }"
-        :weekends="true" 
-        :selectable= "true"
-        :events="EVENTS"
-     />
+  <div class="app">
+    <div class="app-wrapper">
+      <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+          <FullCalendar
+            :options="calendarOptions"
+            :buttontext="{
+              today: 'Hoy',
+              month: 'Mes',
+              week: 'Semana',
+              day: 'Día',
+              list: 'Listado',
+            }"
+            :weekends="false"
+            :selectable="true"
+            :events="EVENTS"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-require('@fullcalendar/core/main.min.css')
-require('@fullcalendar/daygrid/main.min.css')
-require('@fullcalendar/timegrid/main.min.css')
+import FullCalendar from "@fullcalendar/vue3";
+import dayGridPlugin from "@fullcalendar/daygrid";
 
-import Fullcalendar from '@fullcalendar/vue'
-import DayGridPlugin from '@fullcalendar/daygrid'
-import TimeGridPlugin from '@fullcalendar/timegrid'
-import InteractionPlugin from '@fullcalendar/interaction'
-import ListPlugin from '@fullcalendar/list'
-
-import {mapGetters} from 'vuex'
+import interactionPlugin from "@fullcalendar/interaction";
 
 export default {
-    data: () => ({ 
-    calendarPlugins: [ 
-        DayGridPlugin,
-        TimeGridPlugin,
-        InteractionPlugin,
-        ListPlugin
-    ] 
-    }),   
-    components: {Fullcalendar},
-    // computed: { 
-    //     // ...mapGetters("EVENTS")
-    // }    
-    }
-
+  components: {
+    FullCalendar, // make the <FullCalendar> tag available
+  },
+  data() {
+    return {
+      calendarOptions: {
+        plugins: [dayGridPlugin, interactionPlugin],
+        headerToolbar: {
+          center: "dayGridMonth, dayGridWeek, dayGridDay", // buttons for switching between views
+        },
+        initialView: "dayGridWeek",
+        weekends: false,
+         events: [
+          { title: 'event 1', date: '2021-10-27' },
+          { title: 'event 2', date: '2021-10-28' }
+        ]
+      },
+    };
+  },
+};
 </script>
 
 <style>
-
 </style>

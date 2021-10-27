@@ -1,5 +1,7 @@
-import { createStore } from "vuex";
-import axios from "axios";
+
+
+
+import { createStore } from 'vuex'
 
 export default createStore({
   state: {
@@ -56,6 +58,7 @@ export default createStore({
       if (page == undefined) {
         page = 1;
       }
+
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
@@ -77,6 +80,7 @@ export default createStore({
         console.error(err);
       }
     },
+
 
     async login({ commit }, data) {
       try {

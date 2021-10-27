@@ -113,26 +113,15 @@
                     <div class="row justify-content-between align-items-center">
                       <div class="col-auto">
 
-                    <!-- <button @click.prevent="ventana=true" class="btn app-btn-secondary mx-1" >Modificar Contraseña</button> -->
-
-                    <!-- <div v-bind:="ventana" v-if="ventana">
-                      <form name="formName" action="" method="POST" onsubmit='return validatePassword()'>
-                        <label>Password Actual: </label> <input type="password" name="passwordActual"><br>
-                        <label>Nuevo Password:  </label> <input type="password" name="passwordNew1"><br>
-                        <label>Repite Password: </label> <input type="password" name="passwordNew2"> <br>
-                        <button @click.prevent="updatePassword()"  class="btn app-btn-secondary mx-3" type="submit" value="Confirmar Password">Confirmar</button>
-                      </form>
-                      
-                    </div> -->
-
+                 
 
                     <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modPassword">
                    Modificar Contraseña
                   </button>
 
                   <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">

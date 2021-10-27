@@ -62,7 +62,7 @@
 <script>
 
 import { useStore } from 'vuex'
-
+import router from '../router';
 export default {
 setup(){
 
@@ -76,6 +76,7 @@ const store = useStore();
 const login = ((a) => {
 	console.log(user)
 	store.dispatch('login', user)
+	router.push({name: 'Home'})
 })
 
 return{

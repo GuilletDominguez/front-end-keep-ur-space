@@ -3,14 +3,14 @@
         <div class="card px-1 py-4">
             <div class="card-body">
                 <!-- <h6 class="card-title mb-3">This appointment is for</h6> -->
-                <div class="d-flex flex-row"></div>
+                <!-- <div class="d-flex flex-row"></div> -->
                 <h6 class="information mt-4">
                     Rellene los siguientes campos para reservar una sala
                 </h6>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-floating mb-3">
-                            <input type="text" disabled class="form-control" id="floatingInput" placeholder="name@example.com" :value="user">
+                            <input type="text" disabled class="form-control" id="floatingInput" :value="user">
                             <label for="floatingInput">Nombre del solicitante</label>
                         </div>
                     </div>
@@ -33,11 +33,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <br>
-                            <div id="date">
-                                <label for="">Desde el día:</label>
-                                <input v-model="data.dateStart" type="date" name="" id="" >
-                                <br>
+                          
+                            <div class="form-floating mb-3">
+                                <label for="diainicio">Desde el día:</label>
+
+                                <input class="form-control" v-model="data.dateStart" type="date" name="" id="diainicio" >
+                               
+                            </div>
+                            <div class= "form-floating mb-3">
                                 <label for="">Hasta el día:</label>
                                 <input v-model="data.dateEnd" type="date" name="" id="" >
                             </div>
@@ -48,6 +51,10 @@
                                 <label for="">Hasta la hora:</label>
                                 <input v-model="data.hourEnd" type="time" name="" id="" >
                             </div>
+                            	<div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Número de asistentes</label>
+									    <input type="number" class="form-control" id="setting-input-3" :value="request.dateEnd">
+									</div>
                             <br>
                             <br>
                            

@@ -9,6 +9,7 @@ import Historico from "../views/Historico.vue";
 import UnreadRequest from '../views/UnreadRequest.vue'
 import Calendar from '../views/Calendar.vue'
 import ListaUsuario from "../views/ListaUsuario.vue";
+import Agenda from "../views/Agenda.vue";
 
 
 
@@ -97,6 +98,15 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Calendar.vue')
+
+  },
+  {
+    path: '/agenda',
+    name: 'Agenda',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Agenda.vue')
 
   },
   {

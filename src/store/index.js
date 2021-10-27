@@ -1,7 +1,7 @@
 
 
 import { createStore } from 'vuex'
-import axios from 'axios'
+
 
 
 
@@ -90,7 +90,7 @@ export default createStore({
    
       }
          catch(err) {
-           //  this.$router.replace({ path: 'Login' })
+         
            console.error(err)
          }
    

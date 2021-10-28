@@ -17,11 +17,15 @@
               Registro Nuevo Usuario
             </h2>
 
-            <div class="auth-form-container text-start mx-auto">
+            <div class="auth-form-container text-start mx-auto" >
+              <!-- CREACION DE LA ALERTA ///////////////////////////////////////////////////////////-->
+              <div id="mensajeAlerta"></div>                           
+              
               <form
                 @submit.prevent="register"
                 class="auth-form auth-signup-form"
-              >
+              >              
+
                 <div class="email mb-3">
                   <label class="sr-only" for="name"> <b> Nombre </b></label>
                   <input
@@ -30,7 +34,9 @@
                     type="text"
                     v-model="data.name"
                     class="form-control name"
+
                     placeholder="Nombre y apellidos"
+
                     required="required"
                   />
                 </div>
@@ -84,7 +90,6 @@
                 </div>
 
                 <!--//extra-->
-
                 <div class="text-center">
                   <button
                     type="submit"
@@ -92,9 +97,11 @@
                   >
                     Crear Usuario
                   </button>
-                </div>
+                </div>                
               </form>
               <!--//auth-form-->
+
+              
 
               <!-- <div class="auth-option text-center pt-5">Already have an account? <a class="text-link" href="login.html" >Log in</a></div> -->
             </div>
@@ -134,6 +141,7 @@
 </template>
 
 <script>
+
 import '../assets/js/app.js'
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex' 
@@ -146,26 +154,47 @@ setup(){
     email:'',
     password:'',
     password_confirmation: '',
- 
-
+    status:''
+           
   }
-  const register = ((a)=>{
-      
-        console.log(data)
-          store.dispatch('register',data)
-    })
+  const res = computed(() =>{
 
+  return store.state.currentUser
+})
+  const register = ((a)=>{   
+       
+          store.dispatch('register',data).then(response => {
+          if(response == 200) { 
+          document.getElementById('mensajeAlerta').innerHTML += `
+           <div class="alert alert-success text-center " role="alert" v-if="data.status === true">
+             <b> ¡El usuario ha sido creado!</b>
+           </div>`
+          setTimeout(function(){
+            document.getElementById('mensajeAlerta').innerHTML = ''
+          },4000)
+          }
+
+          },
+          error =>{
+            //alert(error)
+            document.getElementById('mensajeAlerta').innerHTML += `
+            <div class="alert alert-danger text-center" role="alert">
+             <b> Ha ocurrido un error </b>
+            </div>`
+          setTimeout(function(){
+            document.getElementById('mensajeAlerta').innerHTML = ''
+          },4000)
+         
+          })                
+    });
+ 
 return {
   data,
-  register
+  register,           
+
+    }
+  }
 }
-}
-	}
-
-
-
-
-
 
 
 </script>

@@ -18,40 +18,46 @@
 		                <div class="app-card app-card-settings shadow-sm p-4">
 						    
 						    <div class="app-card-body">
-							    <form class="settings-form">
+							    <form class="settings-form" >
 								    <div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Nombre del solicitante</label>
-									    <input type="text" class="form-control" id="setting-input-1" :value="user" disabled>
+									    <p type="text" class="form-control" id="setting-input-1"> {{user}} </p>
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-2" class="form-label">Descripción</label>
-									    <input type="text" class="form-control" id="setting-input-2" :value="request.description">
+									    <input type="text" class="form-control" id="setting-input-2" v-model="data.description" v-bind:placeholder="request.description">
 									</div>
+									
 								    <div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Aula solicitada</label>
-									    <input type="text" class="form-control" id="setting-input-3" :value="room">
+										<label for="floatingSelect">¿Qué sala quieres reservar?</label>
+									    <select v-model="selected" @change="onChange(selected)"  class="form-select" id="floatingSelect">
+                                    <option :value="room" selected >{{room}}</option>
+                                    <option v-for="room in rooms" :key="room.id" :value="room.id">{{room.name}}</option>
+                                   
+                                </select>
+                                
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Hora inicial solicitada</label>
-									    <input type="time" class="form-control" id="setting-input-3" :value="request.hourStart">
+									    <input type="time" class="form-control" id="setting-input-3" v-model="data.hourStart" v-bind:placeholder="request.hourStart">
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Hora final solicitada</label>
-									    <input type="time" class="form-control" id="setting-input-3" :value="request.hourEnd">
+									    <input type="time" class="form-control" id="setting-input-3" v-model="data.hourEnd" v-bind:placeholder="request.hourEnd">
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Dia inicial solicitado</label>
-									    <input type="date" class="form-control" id="setting-input-3" :value="request.dateStart">
+									    <input type="date" class="form-control" id="setting-input-3" v-model="data.dateStart" v-bind:placeholder="request.dateStart">
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Dia final solicitado</label>
-									    <input type="date" class="form-control" id="setting-input-3" :value="request.dateEnd">
+									    <input type="date" class="form-control" id="setting-input-3" v-model="data.dateEnd" v-bind:placeholder="request.dateEnd">
 									</div>
 										<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Número de asistentes</label>
-									    <input type="number" class="form-control" id="setting-input-3" :value="request.dateEnd">
+									    <input type="number" class="form-control" id="setting-input-3" >
 									</div>
-									<button type="submit" class="btn btn-warning" >Guardar cambios</button>
+									<button type="submit" @click.prevent="update()" class="btn btn-warning" >Guardar cambios</button>
 							    </form>
 						    </div><!--//app-card-body-->
 						    
@@ -63,7 +69,9 @@
 	                <div class="col-12 col-md-4">
 		                <h3 class="section-title">Estado</h3>
 		                <div class="section-intro"><span class="badge bg-success" v-if="request.status == 'Accepted'">Aceptada</span>
-													<span class="badge bg-warning" v-else>Pendiente</span></div>
+													<span class="badge bg-warning" v-if="request.status == 'Pending'">Pendiente</span>
+													<span class="badge bg-danger" v-if="request.status == 'Cancelled'">Cancelada</span>
+													</div>
 	                </div>
 	                <div class="col-12 col-md-8">
 		                <div class="app-card app-card-settings shadow-sm p-4">
@@ -74,11 +82,11 @@
 							 
 							    <div class="row justify-content-between">
 								    <div class="col-auto">
-								        <a class="btn app-btn-primary" href="#">Aprobar solicitud</a>
+								        <a class="btn app-btn-primary" @click="accept()">Aprobar solicitud</a>
 								    </div>
 									
 								    <div class="col-auto">
-								        <a class="btn btn-danger" href="#">Cancelar solicitud</a>
+								        <a class="btn btn-danger" @click.prevent="cancel()">Cancelar solicitud</a>
 								    </div>
 							    </div>
 								    
@@ -108,7 +116,8 @@ import { useStore } from 'vuex'
 export default {
 props:['id'],
  setup(id) {
-     
+  
+	
     const request_id = id.id
     const store = useStore()
 
@@ -122,23 +131,65 @@ props:['id'],
       return store.state.oneUser
 
     })
+	const onChange = ((value) =>{
+            data.room_id = value            
+        })
+
+	const update = (()=>{
+		console.log(data)
+		store.dispatch('updateRequest',data)
+	})
+
+	const accept = (()=>{
+		data.status = 'Accepted'
+		store.dispatch('updateRequest',data)
+		console.log(data)
+
+	})
+		const cancel = (()=>{
+		data.status = 'Cancelled'
+		store.dispatch('updateRequest',data)
+		
+
+	})
 
     const room = computed(()=>{
-		console.log(store.state.oneRoom)
-		return store.state.oneRoom
+		
+		return store.state.oneRoom 
+	})
+
+	const rooms = computed(()=>{
+		return store.state.rooms
 	})
 
     onMounted(() => {
     
-      store.dispatch('getOneRequest',request_id)
+    store.dispatch('getOneRequest',request_id)
+	store.dispatch('getRooms')
+	
 	  
     })
+  	const data = {
+		id : request_id,
+        dateStart : request.value.dateStart,
+        dateEnd : request.value.dateEnd,
+        hourStart : request.value.hourStart,
+        hourEnd : request.value.hourEnd,
+        room_id: request.value.room_id,
+        description : request.value.description,
+		status : request.value.status
+	}
 
     return {
-
+	  accept,
       request,
 	  user,
-	  room
+	  room,
+	  data,
+	  onChange,
+	  rooms,
+	  update,
+	  cancel
       
 
     }

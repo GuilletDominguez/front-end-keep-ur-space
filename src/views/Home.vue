@@ -45,18 +45,19 @@
 				    </div><!--//col-->
 				    
 				    <div class="col-6 col-lg-3">
-						<router-link class="btn" :to="{
-							name:'UnreadRequest'
-						}">
+						
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Pendientes</h4>
 							    <div class="stats-figure">{{stats.pending}}</div>
+								<router-link class="btn app-btn-secondary" :to="{
+							name:'UnreadRequest'
+						}">Ver</router-link>
 							
 						    </div><!--//app-card-body-->
 						    
 					    </div><!--//app-card-->
-						</router-link>
+					
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
 					    <div class="app-card app-card-stat shadow-sm h-100">
@@ -136,7 +137,7 @@
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4">
 							    
-							    <div class="intro">Pellentesque varius, elit vel volutpat sollicitudin, lacus quam efficitur augue</div>
+							    <div class="intro"> Accede rapidamente a tus peticiones</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
 							   <router-link class="btn app-btn-secondary" 
@@ -166,7 +167,7 @@
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4">
 							    
-							    <div class="intro">Sed maximus, libero ac pharetra elementum, turpis nisi molestie neque, et tincidunt velit turpis non enim.</div>
+							    <div class="intro">Accede rapidamente a tu perfil.</div>
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
 							   <router-link class="btn app-btn-secondary" 

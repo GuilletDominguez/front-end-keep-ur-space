@@ -1,6 +1,8 @@
+
 <template>
   <div class="app app-login p-0">
     <div class="row g-0 app-auth-wrapper">
+
       <div
         style="background-color: ; url(../assets/images/background/background-2.jpg);"
         class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5"
@@ -17,6 +19,7 @@
             </div>
             <h2 class="auth-heading text-center mb-5">RESERVA DE SALAS</h2>
             <div class="auth-form-container text-start">
+
               <form @submit.prevent="login" class="auth-form login-form">
                 <div class="email mb-3">
                   <label class="sr-only" for="email">Email</label>
@@ -62,19 +65,17 @@
                 </div>
               </form>
 
-              <div class="auth-option text-center pt-5">
-                No tiene cuenta? Registrate aqui
-                <a class="text-link" href="signup.html">here</a>.
-              </div>
             </div>
             <!--//auth-form-container-->
           </div>
           <!--//auth-body-->
 
           <footer class="app-auth-footer">
+
             <div class="container text-center py-3">
               <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
             </div>
+
           </footer>
           <!--//app-auth-footer-->
         </div>
@@ -83,21 +84,20 @@
       <!--//auth-main-col-->
       <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
         <div class="auth-background-holder"></div>
-        <!-- <div class="auth-background-mask"></div> -->
-        <!-- <div class="auth-background-overlay p-3 p-lg-5">
-			    <div class="d-flex flex-column align-content-end h-100">
-				    
-				</div>
-		    </div> -->
+
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { useStore } from "vuex";
 
+
+import { useStore } from 'vuex'
+import router from '../router';
 export default {
+
   setup() {
     const user = {
       email: "",
@@ -109,6 +109,7 @@ export default {
     const login = (a) => {
       console.log(user);
       store.dispatch("login", user);
+      router.push({name: 'Home'})
     };
 
     return {
@@ -134,7 +135,7 @@ width: 100% !important;
   width: 800px !important;
   height: 80px !important;
   background-color: white !important;
-}
+
 
 .form-control {
   border: 1px solid black;
@@ -146,7 +147,9 @@ optgroup,
 textarea {
   border-radius: 15px;
 }
+
 .app-auth-wrapper {
   height: 115vh;
 }
+
 </style>

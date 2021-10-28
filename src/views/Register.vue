@@ -1,3 +1,4 @@
+
 <template>
   <div class="app app-signup p-0">
     <div class="row g-0 app-auth-wrapper">
@@ -8,7 +9,7 @@
               <a class="app-logo" href="index.html"
                 ><img
                   class="logo-icon me-2"
-                  src="../assets/images/Don-Bosco.png"
+                  src="../assets/images/icon/background-2.jpg"
                   alt="logo"
               /></a>
             </div>
@@ -16,20 +17,26 @@
               Registro Nuevo Usuario
             </h2>
 
-            <div class="auth-form-container text-start mx-auto">
+            <div class="auth-form-container text-start mx-auto" >
+              <!-- CREACION DE LA ALERTA ///////////////////////////////////////////////////////////-->
+              <div id="mensajeAlerta"></div>                           
+              
               <form
-                @submit.prevent="registrar"
+                @submit.prevent="register"
                 class="auth-form auth-signup-form"
-              >
+              >              
+
                 <div class="email mb-3">
                   <label class="sr-only" for="name"> <b> Nombre </b></label>
                   <input
                     id="name"
                     name="name"
                     type="text"
-                    v-model="name"
+                    v-model="data.name"
                     class="form-control name"
-                    placeholder="Full name"
+
+                    placeholder="Nombre y apellidos"
+
                     required="required"
                   />
                 </div>
@@ -39,7 +46,7 @@
                     id="email"
                     name="email"
                     type="email"
-                    v-model="email"
+                    v-model="data.email"
                     class="form-control email"
                     placeholder="Email"
                     required="required"
@@ -53,7 +60,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    v-model="password"
+                    v-model="data.password"
                     class="form-control password"
                     placeholder="Crear contraseña"
                     required="required"
@@ -67,7 +74,7 @@
                     id="confirm_password"
                     name="confirm_password"
                     type="password"
-                    v-model="confirm_password"
+                    v-model="data.password_confirmation"
                     class="form-control password"
                     placeholder="Volver a escribir la contraseña"
                     required="required"
@@ -83,7 +90,6 @@
                 </div>
 
                 <!--//extra-->
-
                 <div class="text-center">
                   <button
                     type="submit"
@@ -91,9 +97,11 @@
                   >
                     Crear Usuario
                   </button>
-                </div>
+                </div>                
               </form>
               <!--//auth-form-->
+
+              
 
               <!-- <div class="auth-option text-center pt-5">Already have an account? <a class="text-link" href="login.html" >Log in</a></div> -->
             </div>
@@ -133,16 +141,60 @@
 </template>
 
 <script>
+
 import '../assets/js/app.js'
-
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex' 
 export default {
+setup(){
 
-	}
+  const store = useStore();
+  const data = {
+    name: '',
+    email:'',
+    password:'',
+    password_confirmation: '',
+    status:''
+           
+  }
+  const res = computed(() =>{
 
+  return store.state.currentUser
+})
+  const register = ((a)=>{   
+       
+          store.dispatch('register',data).then(response => {
+          if(response == 200) { 
+          document.getElementById('mensajeAlerta').innerHTML += `
+           <div class="alert alert-success text-center " role="alert" v-if="data.status === true">
+             <b> ¡El usuario ha sido creado!</b>
+           </div>`
+          setTimeout(function(){
+            document.getElementById('mensajeAlerta').innerHTML = ''
+          },4000)
+          }
 
+          },
+          error =>{
+            //alert(error)
+            document.getElementById('mensajeAlerta').innerHTML += `
+            <div class="alert alert-danger text-center" role="alert">
+             <b> Ha ocurrido un error </b>
+            </div>`
+          setTimeout(function(){
+            document.getElementById('mensajeAlerta').innerHTML = ''
+          },4000)
+         
+          })                
+    });
+ 
+return {
+  data,
+  register,           
 
-
-
+    }
+  }
+}
 
 
 </script>
@@ -160,12 +212,18 @@ export default {
   border-color: #dc001b;
   border-radius: 50px;
 }
+.app-btn-primary:hover{
+  color: black !important;
+  background-color: #c4c4c4;
+  border-bottom: black solid 3px;
+}
 .form-control {
   border-radius: 50px;
-  border-color: black;
+  border-color: black !important;
 }
 .app-auth-wrapper .app-logo .logo-icon {
   width: 101px;
   height: 67px;
 }
+
 </style>

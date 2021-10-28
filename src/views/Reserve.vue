@@ -3,14 +3,14 @@
         <div class="card px-1 py-4">
             <div class="card-body">
                 <!-- <h6 class="card-title mb-3">This appointment is for</h6> -->
-                <div class="d-flex flex-row"></div>
+                <!-- <div class="d-flex flex-row"></div> -->
                 <h6 class="information mt-4">
                     Rellene los siguientes campos para reservar una sala
                 </h6>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                            <input type="text" disabled class="form-control" id="floatingInput" :value="user">
                             <label for="floatingInput">Nombre del solicitante</label>
                         </div>
                     </div>
@@ -19,14 +19,13 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>----</option>
-                                    <option value="1">Sala 1</option>
-                                    <option value="2">Sala 2</option>
-                                    <option value="3">Sala 3</option>
+                                <select v-model="selected" @change="onChange(selected)" class="form-select" id="floatingSelect">
+                                    <option disabled value="">----</option>
+                                    <option v-for="room in rooms" :key="room.id" :value="room.id">{{room.name}}</option>
+                                   
                                 </select>
                                 <label for="floatingSelect">¿Qué sala quieres reservar?</label>
+                                
                             </div>
                         </div>
                     </div>
@@ -34,17 +33,31 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <br>
-                            <div id="date">
-                                <label for="">Desde el día:</label>
-                                <input type="date" name="" id="" :disabled="disabled" v-model="checked">
-                                <br>
-                                <label for="">Hasta el día:</label>
-                                <input type="date" name="" id="" :disabled="disabled" v-model="checked">
+                          
+                            <div class="form-floating mb-3">
+                                <label for="diainicio">Desde el día:</label>
+
+                                <input class="form-control" v-model="data.dateStart" type="date" name="" id="diainicio" >
+                               
                             </div>
+                            <div class= "form-floating mb-3">
+                                <label for="">Hasta el día:</label>
+                                <input v-model="data.dateEnd" type="date" name="" id="" >
+                            </div>
+                              <div id="date">
+                                <label for="">Desde la hora:</label>
+                                <input v-model="data.hourStart" type="time" name="" id="">
+                                <br>
+                                <label for="">Hasta la hora:</label>
+                                <input v-model="data.hourEnd" type="time" name="" id="" >
+                            </div>
+                            	<div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Número de asistentes</label>
+									    <input type="number" class="form-control" id="setting-input-3" :value="request.dateEnd">
+									</div>
                             <br>
                             <br>
-                            <input class="form-check-input me-1 primary" type="checkbox" name="" id="" @change="checked">Quiero reservar esta sala a fecha de hoy
+                           
                             
                             <div class="input-group">
                             
@@ -58,17 +71,14 @@
                             <br>
                             <div class="input-group">
                                 <textarea id="textarea" cols="50" rows="3"
-                                    placeholder="¿Para qué quieres reservar esta sala?"></textarea>
+                                    placeholder="¿Para qué quieres reservar esta sala?" v-model="data.description"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=" d-flex flex-column text-center px-5 mt-3 mb-3">
-                    <small class="agree-text">By Booking this appointment you agree to the</small>
-                    <a href="#" class="terms">Terms & Conditions</a>
-                </div>
-                <button class="btn btn-danger btn-block confirm-button">
-                    Confirm
+                <br>
+                <button class="btn btn-danger btn-block confirm-button" @click.prevent="request">
+                    Confirmar
                 </button>
             </div>
         </div>
@@ -76,12 +86,57 @@
 </template>
 
 <script>
-    const data = {
-    data: {
-        checked : false
-    }}
-    export default {
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
+export default {
+setup() {
 
+    const store = useStore()
+    const user = computed(() =>{
+    return localStorage.getItem('user')
+    
+    })
+
+   const selected = '';
+    const data = {
+        user_id: JSON.parse(localStorage.getItem('user_id')),
+        dateStart : '',
+        dateEnd : '',
+        hourStart : '',
+        hourEnd : '',
+        room_id: '',
+        description : '',
+    }
+
+    const rooms = computed(() =>{
+      return store.state.rooms
+    })
+    
+    const request = ((a)=>{      
+        console.log(data)
+         store.dispatch('createRequest',data)
+    })
+  
+     onMounted(() => {
+      store.dispatch('getRooms')
+    })
+
+    const onChange = ((value) =>{
+            data.room_id = value            
+        })
+    return {
+
+    user,
+    rooms,
+    request,
+    data,
+    selected,
+    onChange
+    }
+  },
+    methods:{
+ 
+        }
     }
 </script>
 

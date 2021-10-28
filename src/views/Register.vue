@@ -9,7 +9,7 @@
               <a class="app-logo" href="index.html"
                 ><img
                   class="logo-icon me-2"
-                  src="../assets/images/Don-Bosco.png"
+                  src="../assets/images/icon/background-2.jpg"
                   alt="logo"
               /></a>
             </div>
@@ -34,7 +34,9 @@
                     type="text"
                     v-model="data.name"
                     class="form-control name"
-                    placeholder="Nombre completo"
+
+                    placeholder="Nombre y apellidos"
+
                     required="required"
                   />
                 </div>
@@ -210,9 +212,14 @@ return {
   border-color: #dc001b;
   border-radius: 50px;
 }
+.app-btn-primary:hover{
+  color: black !important;
+  background-color: #c4c4c4;
+  border-bottom: black solid 3px;
+}
 .form-control {
   border-radius: 50px;
-  border-color: black;
+  border-color: black !important;
 }
 .app-auth-wrapper .app-logo .logo-icon {
   width: 101px;

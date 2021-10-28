@@ -1,3 +1,4 @@
+
 <template>
 
     <div class="app">
@@ -93,4 +94,5 @@ require('@fullcalendar/timegrid/main.min.css') */
     #FullCalendar {
         margin: 25%;
     }
+
 </style>

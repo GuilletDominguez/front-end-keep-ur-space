@@ -136,7 +136,7 @@ width: 100% !important;
   height: 80px !important;
   background-color: white !important;
 
-
+}
 .form-control {
   border: 1px solid black;
 }

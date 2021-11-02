@@ -2,6 +2,7 @@
 
 
 import { createStore } from 'vuex'
+import router from '../router';
 
 export default createStore({
   state: {
@@ -71,13 +72,19 @@ export default createStore({
             },
           }
         );
+        
         const data = await response.json();
+        if(data.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
         commit("setCurrentRequest", data.reserves.data);
         commit("setRequestFilter", data.reserves.data);
         commit("setPagination", data.paginate);
       } catch (err) {
         //  this.$router.replace({ path: 'Login' })
-        console.error(err);
+        console.log(err.message);
       }
     },
 
@@ -93,7 +100,7 @@ export default createStore({
           },
         });
         const res = await response.json();
-        console.log(res);
+        
 
         localStorage.setItem("user", res.user.name);
         localStorage.setItem("user_id", res.user.id);
@@ -101,7 +108,7 @@ export default createStore({
 
         commit("setCurrentUser", res);
 
-        window.location.assign("/");
+        router.push({name : 'Home'});
       } catch (err) {
         console.error(err);
       }
@@ -139,7 +146,13 @@ export default createStore({
             Authorization: `Bearer ${token}`,
           },
         });
+        
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
         commit("setCurrentRequest", res);
       } catch (err) {
         //  this.$router.replace({ path: 'Login' })
@@ -158,7 +171,11 @@ export default createStore({
           },
         });
         const data = await response.json();
+        if(data.message == 'Unauthenticated.'){
 
+          router.push({name: 'Login'})
+
+        }
         commit("setRooms", data);
       } catch (err) {
         //  this.$router.replace({ path: 'Login' })
@@ -205,6 +222,11 @@ export default createStore({
           },
         });
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
         commit("setCurrentUser", res);
       } catch (err) {
         console.error(err);
@@ -241,6 +263,16 @@ export default createStore({
           },
         });
         const data = await response.json();
+        if(data.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(data.message == 'No tienes permisos de administrador'){
+
+          alert(data.message)
+          router.push({name:'Home'})
+        }
         commit("setlistUser", data);
       } catch (err) {
         //  this.$router.replace({ path: 'Login' })
@@ -269,6 +301,16 @@ export default createStore({
           }
         );
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         commit("setCurrentUser", res);
       } catch (err) {
         console.error(err);
@@ -289,6 +331,16 @@ export default createStore({
           }
         );
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         localStorage.removeItem("user-request");
         localStorage.setItem("user-request", res.user.name);
 
@@ -313,7 +365,14 @@ export default createStore({
             },
           }
         );
+          
         const res = await response.json();
+      
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
         commit("setStats", res);
       } catch (err) {
         console.error(err);
@@ -333,6 +392,16 @@ export default createStore({
           },
         });
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         commit("setCurrentUser", res);
       } catch (err) {
         console.error(err);
@@ -356,6 +425,16 @@ export default createStore({
           }
         );
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         commit("setCurrentUser", res);
       } catch (err) {
         console.error(err);
@@ -372,6 +451,16 @@ export default createStore({
           },
         });
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         commit("setRequestFilter", res);
       } catch (err) {
         console.error(err);
@@ -415,6 +504,16 @@ export default createStore({
           },
         });
         const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+        else if(res.message == 'No tienes permisos de administrador'){
+
+          alert(res.message)
+          router.push({name:'Home'})
+        }
         commit("setCurrentRequest", res);
       } catch (err) {
         console.error(err);
@@ -424,10 +523,6 @@ export default createStore({
 
     },
 
-    async auth(){
-
-     
-  }
 
   },
 

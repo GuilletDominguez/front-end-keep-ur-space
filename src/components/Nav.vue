@@ -257,7 +257,7 @@
 			</li>
              <li class="nav-item">
               <router-link
-                :to="{ name: 'ListUsers' }"
+                :to="{ name: 'ListaUsuario' }"
                 exact-active-class="active"
                 class="nav-link"
               >

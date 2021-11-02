@@ -46,7 +46,7 @@ const routes = [
         component: Register,
       },
       {
-        path: "/perfil/:id",
+        path: "/perfil/:id?",
         name: "Perfil",
         component: Perfil,
         props:true
@@ -72,7 +72,7 @@ const routes = [
 
 
     {
-    path: '/request/:id',
+    path: '/request/:id?',
     name: 'SingleRequest',
     props:true,
     // route level code-splitting

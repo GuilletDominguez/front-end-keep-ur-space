@@ -119,7 +119,7 @@
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
               <router-link
                 class="nav-link"
-                :to="{ name: 'Calendar' }"
+                :to="{ name: 'Agenda' }"
                 exact-active-class="active"
               >
                 <span class="nav-icon">
@@ -142,6 +142,9 @@
                 <span class="nav-link-text">Calendario </span> </router-link
               ><!--//nav-link-->
             </li>
+
+
+            
 
             <li class="nav-item">
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->

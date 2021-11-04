@@ -115,7 +115,7 @@
             </li>
             <!--//nav-item-->
 
-            <li class="nav-item">
+            <li class="nav-item" v-if="rol == 1">
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
               <router-link
                 class="nav-link"
@@ -146,7 +146,7 @@
 
             
 
-            <li class="nav-item">
+            <li class="nav-item" v-if="rol == 1">
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
               <router-link
                 class="nav-link"
@@ -198,7 +198,7 @@
             </li>
             <!--//nav-item-->
 
-            <li class="nav-item">
+            <li class="nav-item" v-if="rol == 0">
               <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
               <router-link
                 class="nav-link"
@@ -232,7 +232,7 @@
             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 
             <!--//////////////// NUEVO USUARIO ////////////////-->
-            <li class="nav-item">
+            <li class="nav-item" v-if="rol == 1">
               <router-link
                 :to="{ name: 'Register' }"
                 exact-active-class="active"
@@ -255,7 +255,7 @@
                 <span class="nav-link-text">Nuevo Usuario</span>
               </router-link>
 			</li>
-             <li class="nav-item">
+             <li class="nav-item" v-if="rol == 1">
               <router-link
                 :to="{ name: 'ListaUsuario' }"
                 exact-active-class="active"
@@ -358,16 +358,17 @@ export default {
 setup() {
 	const store = useStore();
   const userId = localStorage.getItem('user_id')
-  
+  const rol = localStorage.getItem('rol')
 	const logOut = (()=>{
 
 		store.dispatch('logOut');
-    window.location.replace('/login')
+    
 	})
 
 	return {
 		logOut,
-    userId
+    userId,
+    rol
 	}
 }
 

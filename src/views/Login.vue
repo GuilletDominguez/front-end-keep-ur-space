@@ -17,7 +17,7 @@
                   alt="logo"
               /></a>
             </div>
-            <h2 class="auth-heading text-center mb-5">RESERVA DE SALAS</h2>
+            <h2 class="auth-heading text-center mb-5">RESERVA DE AULAS</h2>
             <div class="auth-form-container text-start">
 
               <form @submit.prevent="login" class="auth-form login-form">
@@ -107,9 +107,9 @@ export default {
     const store = useStore();
 
     const login = (a) => {
-      console.log(user);
+     
       store.dispatch("login", user);
-      router.push({name: 'Home'})
+     
     };
 
     return {

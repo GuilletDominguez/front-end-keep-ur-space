@@ -16,6 +16,7 @@ export default createStore({
     oneUser: [],
     oneRoom: [],
     stats: [],
+    reserves:[]
   },
   mutations: {
     setCurrentRequest(state, payload) {
@@ -30,7 +31,9 @@ export default createStore({
     setRooms(state, payload) {
       state.rooms = payload;
     },
-
+    setReserves(state, payload) {
+      state.reserves = payload;
+    },
     setlistUser(state, payload) {
       state.listUser = payload;
     },
@@ -105,10 +108,17 @@ export default createStore({
         localStorage.setItem("user", res.user.name);
         localStorage.setItem("user_id", res.user.id);
         localStorage.setItem("token", res.token);
+        localStorage.setItem("rol",res.user.is_admin)
 
         commit("setCurrentUser", res);
-
-        router.push({name : 'Home'});
+        
+       
+        setTimeout(function(){
+          
+        
+          router.push({name : 'Home'}); }, 2000);
+       
+        
       } catch (err) {
         console.error(err);
       }
@@ -481,8 +491,10 @@ export default createStore({
         localStorage.removeItem("user");
         localStorage.removeItem("user_id");
         localStorage.removeItem("token");
+        localStorage.removeItem('rol')
         const res = await response.json();
         commit("setCurrentUser", res);
+        router.push({name : 'Login'})
       } catch (err) {
         console.error(err);
       }
@@ -523,8 +535,40 @@ export default createStore({
 
     },
 
+    async getReserves({commit}){
+
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8000/api/getreserves/", {
+      
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const res = await response.json();
+        if(res.message == 'Unauthenticated.'){
+
+          router.push({name: 'Login'})
+
+        }
+       
+          commit("setReserves", res);
+
+      
+      
+        
+      } catch (err) {
+        console.error(err);
+      }
+
+
+    }
 
   },
+
+  
 
   modules: {},
 });

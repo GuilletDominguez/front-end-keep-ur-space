@@ -82,7 +82,7 @@
 							 
 							    <div class="row justify-content-between">
 								    <div class="col-auto">
-								        <a class="btn app-btn-primary" @click="accept()">Aprobar solicitud</a>
+								        <a class="btn app-btn-primary" v-if="rol == 1" @click="accept()">Aprobar solicitud</a>
 								    </div>
 									
 								    <div class="col-auto">
@@ -117,7 +117,7 @@ export default {
 props:['id'],
  setup(id) {
   
-	
+	const rol = localStorage.getItem('rol')
     const request_id = id.id
     const store = useStore()
 
@@ -189,7 +189,8 @@ props:['id'],
 	  onChange,
 	  rooms,
 	  update,
-	  cancel
+	  cancel,
+	  rol
       
 
     }
